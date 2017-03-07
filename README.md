@@ -10,4 +10,4 @@ Liam Rush - N0632994 - liam.rush2015@my.ntu.ac.uk
 Oliver Dawson - N0629761 - oliver.dawson2015@my.ntu.ac.uk
 
 ## Tutor
-Pedro Machado - pedro.baptistamachado@ntua.ac.uk
+Pedro Machado - pedro.baptistamachado@ntu.ac.uk
