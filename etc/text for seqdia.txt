@@ -1,0 +1,44 @@
+https://www.websequencediagrams.com/
+
+title Sequence Diagram
+
+
+Player->+Menu: createNewGame()
+Menu->Character Creation: createNewChar(charName)
+Character Creation->Character Creation: nameCharacter()
+Character Creation->Character Creation: selectClass()
+Character Creation->Character Creation: selectGender()
+Character Creation->Menu: createNewChar()
+Menu->Tutorial: displayTutorial()
+Tutorial->Menu: displayTutorial()
+loop GameLoop
+Menu->Game Screen: startGame(charInfo)
+loop until playerHealth == 0
+    Game Screen->Game Screen: moveSymbols()
+    Game Screen->Game Screen: validateMove()
+    Game Screen->Game Screen: rewardMove()
+    opt player uses an action
+    Game Screen->Game Screen: useAction(actionNo)
+    Game Screen->Game Screen: validateAction()
+    end
+    
+end
+alt Victory
+    Game Screen->Game Screen: displayVictoryScreen()
+    opt ShopBuy
+    Game Screen->Shop Screen: buyItem(cost)
+    Shop Screen->Shop Screen: removeCost(cost)
+    Shop Screen->Game Screen: buyItem()
+    end
+    opt ShopSell
+    Game Screen->Shop Screen: sellItem(value)
+    Shop Screen->Shop Screen: giveValue(value)
+    Shop Screen->Game Screen: removeItem()
+    end
+    
+
+else Defeat
+Game Screen->Menu: startGame()
+Menu-->-Player: createNewGame()
+end
+end
