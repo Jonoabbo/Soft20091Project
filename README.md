@@ -10,4 +10,4 @@ Our project will be a single player puzzle game that plays in a match 3 style in
 * Oliver Dawson - N0629761 <oliver.dawson2015@my.ntu.ac.uk>
 
 ## Tutor
-Pedro Machado <pedro.baptistamachado@ntu.ac.uk>
+* Pedro Machado <pedro.baptistamachado@ntu.ac.uk>
