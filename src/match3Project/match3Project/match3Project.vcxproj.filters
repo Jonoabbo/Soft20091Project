@@ -30,6 +30,9 @@
     <ClInclude Include="gridHandle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
