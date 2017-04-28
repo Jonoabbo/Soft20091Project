@@ -11,19 +11,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int grid[8][8];
-	srand(time(NULL));
-
-	//create grid of random numbers
-
-	for (int i = 0; i < 8; i++)
-	{
-		for (int j = 0; j < 8; j++)
-		{
-			grid[i][j] = (rand() % 5) + 1;
-			std::cout << "Position " << i << ", " << j << " : " << grid[i][j] << std::endl;
-		}
-	}
+	GridInit test;
 
 	return 0;
 }

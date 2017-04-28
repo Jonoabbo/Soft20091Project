@@ -1,10 +1,15 @@
 #include <iostream>
+#include "gridInit.h"
 
-class gridHandle : public gridInit
+class GridHandle : public GridInit
 {
 public:
-	gridHandle()
-	{
-		//do something
-	}
+	//recieve array and store in var
+	GridHandle();
+
+	//weighting handling
+	void weighting();
+
+	//check area around where swap is made
+	void checkSwapArea();
 };
