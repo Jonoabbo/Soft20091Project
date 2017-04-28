@@ -79,6 +79,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EnemyClass.h" />
     <ClInclude Include="gridHandle.h" />
     <ClInclude Include="gridInit.h" />
     <ClInclude Include="PlayerClass.h" />
@@ -86,9 +87,11 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EnemyClass.cpp" />
     <ClCompile Include="gridHandle.cpp" />
     <ClCompile Include="gridInit.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerClass.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
