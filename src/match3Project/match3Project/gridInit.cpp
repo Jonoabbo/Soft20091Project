@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "gridInit.h"
 
-gridInit::gridInit(int a[8][8])
+gridInit::gridInit()
 {
 	for (int i = 0; i < 5; i++)
 	{
