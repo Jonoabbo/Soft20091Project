@@ -6,8 +6,10 @@ class EnemyClass: public PlayerClass
 {	
 public:
 	int difficulty;
-
+	
 	int weighting(int, int);
 	void adjustDifficulty(int);
+
+	EnemyClass();
 	
 };

@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "gridInit.h"
+#include "gridHandle.h"
 #include <string>
 #include <time.h>
 #include <stdlib.h>
@@ -11,8 +11,9 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	GridInit test;
-
+	GridHandle handleTest;
+	
+	handleTest.grid;
 	return 0;
 }
 

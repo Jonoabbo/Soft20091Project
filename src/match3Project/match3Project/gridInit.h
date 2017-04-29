@@ -10,13 +10,7 @@ public:
 	GridInit();
 
 	//search grid to find 3 4 5 matches
-	void checkForMatch();
-
-	//swap two positions
-	void swapPositions();
-
-	//drop down tiles -- performs 'bubble sort'
-	void dropDown();
+	int checkForMatch();
 
 	//OLIVER TO IMPLEMENT -- you handle this part
 	void checkForPossibleSwaps();
