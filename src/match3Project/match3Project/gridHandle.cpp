@@ -115,7 +115,31 @@ void GridHandle::dropSortAlgorithm(int index)
 	}
 }
 
-void GridHandle::checkSwapArea()
+void GridHandle::checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j)
 {
+	//search both rows
+	//search both columns
+	//if match
+	//replace match with zeros
+	//award player mana + score
+	//call dropDown()
+	//check drops for matches
+	//repeate
+
+	//else
+
+
+}
+
+void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j)
+{
+	//copy grid to temp array
+	//store temp[pos1i][pos1j] in tempVar
+	//make temp[pos1i][pos1j] equal to temp[pos2i][pos2j]
+	//make temp[pos2i][pos2j] equal to tempVar
+
+	//call checkSwapArea()
+	//if true then make grid = temp
+	//else tell player move cannot be made
 
 }

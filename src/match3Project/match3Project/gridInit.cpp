@@ -43,7 +43,6 @@ int GridInit::checkForMatches()
 	int nMatchesFound = 0;
 
 	int aCounter = 0;
-	int dCounter = 0;
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++)
@@ -64,6 +63,7 @@ int GridInit::checkForMatches()
 		}
 	}
 
+	int dCounter = 0;
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++)
@@ -87,5 +87,12 @@ int GridInit::checkForMatches()
 	return nMatchesFound;
 
 }
+
+// ##  PLANS FOR CHANGES TO checkForMatches() ##
+//	break when comparison isn't true
+//	check number on counter
+//	then reset to zero
+//	return a vector of positions
+//	split into two functions one for column one for row
 
 // example[row][coloum]

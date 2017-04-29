@@ -23,6 +23,9 @@ public:
 	void weighting();
 
 	//check area around where swap is made and remove match
-	void checkSwapArea();
+	void checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j);
+
+	//sets removed blocks to 0 then calls dropDown
+	void removeFromGrid();
 
 };
