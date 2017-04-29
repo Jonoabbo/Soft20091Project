@@ -10,7 +10,9 @@ public:
 	GridInit();
 
 	//search grid to find 3 4 5 matches
-	int checkForMatch();
+	//int checkForMatch();
+
+	int checkForMatches();
 
 	//OLIVER TO IMPLEMENT -- you handle this part
 	void checkForPossibleSwaps();

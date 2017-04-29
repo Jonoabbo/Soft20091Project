@@ -18,241 +18,71 @@ GridInit::GridInit()
     }
 
 	//check grid for existing matches
-	int con = checkForMatch();
+	int con = checkForMatches();
 
 	while (con != 0)
 	{
-		con = checkForMatch();
+		con = checkForMatches();
+		std::cout << con << std::endl;
 	}
 }
 
-int GridInit::checkForMatch()
+int GridInit::checkForMatches()
 {
-	//seed random
-	srand(time(NULL));
+	//search each row
+	//counter
+	//if next matches increment counter
+	//else reset counter
+	//if counter ==3 then match 3 found
+	//get current element and previous 2
+	//randomly change value of one
+	//repeat for if counter ==4 or ==5
+	//repeat all for columns
+	//going across --->
 
 	int nMatchesFound = 0;
 
-	int wildCardBitches = 6;
-
-	std::cout << std::endl;
-	std::cout << "-----## MATCHES FOUND ##-----" << std::endl;
-
-	//for loops to handle down searches
-	for (int i = 0; i < 5; i++)
+	int aCounter = 0;
+	int dCounter = 0;
+	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++)
 		{
-			//match 1
-			int compare = grid[i][j];
-
-			//match 2
-			if (compare == grid[i + 1][j])
+			//going across --->
+			if (grid[i][j] == grid[i][j+1])
 			{
-				//match 3
-				if (compare == grid[i + 2][j] && (i <= 5))
-				{
-					//match 4
-					if (compare == grid[i + 3][j] && (i <= 4))
-					{
-						//match 5
-						if (compare == grid[i + 4][j] && (i <= 3))
-						{
-							std::cout << "Match 5 found at positions: " << i << "," << j << " " << i + 1 << "," << j << " " << i + 2 << "," << j << " " << i + 3 << "," << j << " " << i + 4 << "," << j << std::endl;
-							nMatchesFound++;
+				aCounter++;
+			}
 
-							//alternate way of implementing swaps
-							int randomPos = (rand() % 5);
-							grid[i + randomPos][j] = (rand() % 5 + 1);
-
-							//performs swap of positions
-							/*int randomPos = (rand() % 5);
-							int temp = grid[i + randomPos][j];
-							if (j == 7)
-							{
-								grid[i + randomPos][j] = grid[i + randomPos][j - 1];
-								grid[i + randomPos][j - 1] = temp;
-								std::cout << "Position: " << i + randomPos << "," << j << " swapped with: " << i + randomPos << "," << j - 1 << std::endl;
-								std::cout << std::endl;
-							}
-							else
-							{
-								grid[i + randomPos][j] = grid[i + randomPos][j + 1];
-								grid[i + randomPos][j + 1] = temp;
-								std::cout << "Position: " << i + randomPos << "," << j << " swapped with: " << i + randomPos << "," << j + 1 << std::endl;
-								std::cout << std::endl;
-							}*/
-
-						}
-						else
-						{
-							std::cout << "Match 4 found at positions: " << i << "," << j << " " << i + 1 << "," << j << " " << i + 2 << "," << j << " " << i + 3 << "," << j << std::endl;
-							nMatchesFound++;
-
-							//alternate way of implementing swaps
-							int randomPos = (rand() % 5);
-							grid[i + randomPos][j] = (rand() % 5 + 1);
-
-							//performs swap of positions
-							/*int randomPos = (rand() % 4);
-							int temp = grid[i + randomPos][j];
-							if (j == 7)
-							{
-								grid[i + randomPos][j] = grid[i + randomPos][j - 1];
-								grid[i + randomPos][j - 1] = temp;
-								std::cout << "Position: " << i + randomPos << "," << j << " swapped with: " << i + randomPos << "," << j - 1 << std::endl;
-								std::cout << std::endl;
-							}
-							else
-							{
-								grid[i + randomPos][j] = grid[i + randomPos][j + 1];
-								grid[i + randomPos][j + 1] = temp;
-								std::cout << "Position: " << i + randomPos << "," << j << " swapped with: " << i + randomPos << "," << j + 1 << std::endl;
-								std::cout << std::endl;
-							}*/
-
-
-						}
-					}
-					else
-					{
-						std::cout << "Match 3 found at positions: " << i << "," << j << " " << i + 1 << "," << j << " " << i + 2 << "," << j << std::endl;
-						nMatchesFound++;
-
-						//alternate way of implementing swaps
-						int randomPos = (rand() % 5);
-						grid[i + randomPos][j] = (rand() % 5 + 1);
-
-						//performs swap of positions
-						/*int randomPos = (rand() % 3);
-						int temp = grid[i + randomPos][j];
-						if (j == 7)
-						{
-							grid[i + randomPos][j] = grid[i + randomPos][j - 1];
-							grid[i + randomPos][j - 1] = temp;
-							std::cout << "Position: " << i + randomPos << "," << j << " swapped with: " << i + randomPos << "," << j - 1 << std::endl;
-							std::cout << std::endl;
-						}
-						else
-						{
-							grid[i + randomPos][j] = grid[i + randomPos][j + 1];
-							grid[i + randomPos][j + 1] = temp;
-							std::cout << "Position: " << i + randomPos << "," << j << " swapped with: " << i + randomPos << "," << j + 1 << std::endl;
-							std::cout << std::endl;
-						}*/
-
-					}
-				}
+			if (aCounter == 2)
+			{
+				//reset counter
+				aCounter = 0;
+				grid[i][j + 1] = rand() % 5 + 1;
+				nMatchesFound++;
 			}
 		}
 	}
 
-	//for loops to handle across searches
 	for (int i = 0; i < 8; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 8; j++)
 		{
-			//match 1
-			int compare = grid[i][j];
-
-			//match 2
-			if (compare == grid[i][j + 1])
+			//going d o w n
+			if (grid[i][j] == grid[i + 1][j])
 			{
-				//match 3
-				if (compare == grid[i][j + 2] && (j <= 5))
-				{
-					//match 4
-					if (compare == grid[i][j + 3] && (j <= 4))
-					{
-						//match 5
-						if (compare == grid[i][j + 4] && (j <= 3))
-						{
-							std::cout << "Match 5 found at positions: " << i << "," << j << " " << i << "," << j + 1 << " " << i << "," << j + 2 << " " << i << "," << j + 3 << " " << i << "," << j + 4 << std::endl;
-							nMatchesFound++;
+				dCounter++;
+			}
 
-							//alternate way of implementing swaps
-							int randomPos = (rand() % 5);
-							grid[i][j + randomPos] = (rand()%5 + 1);
-
-							//performs swap of positions
-							/*int randomPos = (rand() % 5);
-							int temp = grid[i][j + randomPos];
-							if (i == 7)
-							{
-								grid[i][j + randomPos] = grid[i - 1][j + randomPos];
-								grid[i - 1][j + randomPos] = temp;
-								std::cout << "Position: " << i << "," << j + randomPos << " swapped with: " << i - 1 << "," << j + randomPos << std::endl;
-								std::cout << std::endl;
-							}
-							else
-							{
-								grid[i][j + randomPos] = grid[i + 1][j + randomPos];
-								grid[i + 1][j + randomPos] = temp;
-								std::cout << "Position: " << i << "," << j + randomPos << " swapped with: " << i + 1 << "," << j + randomPos << std::endl;
-								std::cout << std::endl;
-							}*/
-						}
-					}
-					else
-					{
-						std::cout << "Match 4 found at positions: " << i << "," << j << " " << i << "," << j + 1 << " " << i << "," << j + 2 << " " << i << "," << j + 3 << std::endl;
-						nMatchesFound++;
-
-						//alternate way of implementing swaps
-						int randomPos = (rand() % 5);
-						grid[i][j + randomPos] = (rand() % 5 + 1);
-
-						//performs swap of positions
-						/*int randomPos = (rand() % 4);
-						int temp = grid[i][j + randomPos];
-						if (i == 7)
-						{
-							grid[i][j + randomPos] = grid[i - 1][j + randomPos];
-							grid[i - 1][j + randomPos] = temp;
-							std::cout << "Position: " << i << "," << j + randomPos << " swapped with: " << i - 1 << "," << j + randomPos << std::endl;
-							std::cout << std::endl;
-						}
-						else
-						{
-							grid[i][j + randomPos] = grid[i + 1][j + randomPos];
-							grid[i + 1][j + randomPos] = temp;
-							std::cout << "Position: " << i << "," << j + randomPos << " swapped with: " << i + 1 << "," << j + randomPos << std::endl;
-							std::cout << std::endl;
-						}*/
-					}
-				}
-				else
-				{
-					std::cout << "Match 3 found at positions: " << i << "," << j << " " << i << "," << j + 1 << " " << i << "," << j + 2 << std::endl;
-					nMatchesFound++;
-
-					//alternate way of implementing swaps
-					int randomPos = (rand() % 5);
-					grid[i][j + randomPos] = (rand() % 5 + 1);
-
-					//performs swap of positions
-					/*int randomPos = (rand() % 3);
-					int temp = grid[i][j + randomPos];
-					if (i == 7)
-					{
-						grid[i][j + randomPos] = grid[i - 1][j + randomPos];
-						grid[i - 1][j + randomPos] = temp;
-						std::cout << "Position: " << i << "," << j + randomPos << " swapped with: " << i - 1 << "," << j + randomPos << std::endl;
-						std::cout << std::endl;
-					}
-					else
-					{
-						grid[i][j + randomPos] = grid[i + 1][j + randomPos];
-						grid[i + 1][j + randomPos] = temp;
-						std::cout << "Position: " << i << "," << j + randomPos << " swapped with: " << i + 1 << "," << j + randomPos << std::endl;
-						std::cout << std::endl;
-					}*/
-				}
+			if (dCounter == 2)
+			{
+				//reset counter
+				dCounter = 0;
+				grid[i + 1][j] = rand() % 5 + 1;
+				nMatchesFound++;
 			}
 		}
 	}
-
-	std::cout << "Total Matches found: " << nMatchesFound << std::endl;
 
 	return nMatchesFound;
 

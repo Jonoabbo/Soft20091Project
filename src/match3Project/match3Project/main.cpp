@@ -13,7 +13,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	GridHandle handleTest;
 	
-	handleTest.grid;
+	handleTest.dropDown();
 	return 0;
 }
 
