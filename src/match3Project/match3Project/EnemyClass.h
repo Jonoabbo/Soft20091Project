@@ -2,14 +2,17 @@
 
 #include "PlayerClass.h"
 
-class EnemyClass: public PlayerClass
+class enemyClass: public playerClass
 {	
-public:
+private:
 	int difficulty;
 	
 	int weighting(int tile, int size);
+public:
+	
 	void adjustDifficulty(int);
 
-	EnemyClass(int newHP, int newDiff);
+	enemyClass();
+	enemyClass(int newHP, int newDiff);
 	
 };

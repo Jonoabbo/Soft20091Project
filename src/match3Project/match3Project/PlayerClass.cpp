@@ -2,30 +2,30 @@
 #include "PlayerClass.h"
 
 
-PlayerClass::PlayerClass()
+playerClass::playerClass()
 {
 		hp = 50;
 		red, blue, green, yellow = 0;
 }
 
-void PlayerClass::adjustHp(int newHP)
+void playerClass::adjustHp(int newHP)
 {
 	hp = newHP;
 }
 
-void PlayerClass::adjustRed(int newRed)
+void playerClass::adjustRed(int newRed)
 {
 	red = newRed;
 }
-void PlayerClass::adjustBlue(int newBlue) {
+void playerClass::adjustBlue(int newBlue) {
 	blue = newBlue;
 }
-void PlayerClass::adjustYellow(int newYellow) 
+void playerClass::adjustYellow(int newYellow) 
 {
 	yellow = newYellow;
 }
 
-void PlayerClass::adjustGreen(int newGreen) 
+void playerClass::adjustGreen(int newGreen) 
 {
 	green = newGreen;
 }

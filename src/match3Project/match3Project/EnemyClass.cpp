@@ -2,7 +2,7 @@
 #include "EnemyClass.h"
 
 
-int EnemyClass::weighting(int tile, int size)
+int enemyClass::weighting(int tile, int size)
 	{
 		switch (tile)
 		{
@@ -58,13 +58,19 @@ int EnemyClass::weighting(int tile, int size)
 			return 3;
 		}
 	}
-void EnemyClass::adjustDifficulty(int newDiff)
+void enemyClass::adjustDifficulty(int newDiff)
 {
 	difficulty = newDiff;
 
 }
 
-EnemyClass::EnemyClass(int newHp, int newDiff){
+enemyClass::enemyClass(){
 	hp = 50;
 	difficulty = 5;
+	red, blue, green, yellow = 0;
 }		
+enemyClass::enemyClass(int newHp = 0, int newDiff = 0) {
+	hp = newHp;
+	difficulty = newDiff;
+	red, blue, green, yellow = 0;
+}

@@ -1,11 +1,13 @@
 #pragma once
 
 
-class PlayerClass
+class playerClass
 {
-public:
+private:
 	int hp, red, blue, green, yellow;
-	PlayerClass();
+public:
+	
+	playerClass();
 	void adjustHp(int);
 	void adjustRed(int);
 	void adjustBlue(int);
