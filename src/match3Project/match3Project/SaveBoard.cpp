@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "SaveBoard.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -38,5 +39,17 @@ saveBoard::saveBoard(playerClass player, enemyClass enemy, string board)
 }
 
 void saveBoard::save(vector<string> saveData) {
+	string line;
+	ifstream myFile;
+	myFile.open("gameSaves.xml");
+	if (myFile.is_open())
+	{
+		while (getline(myFile, line))
+		{
+			if (line = "<root>")
+			{
 
+			}
+		}
+	}
 }
