@@ -9,25 +9,24 @@ using namespace std;
 saveBoard::saveBoard(playerClass player, enemyClass enemy, string board)
 {
 	vector<string> saveData;
-
 	//Save profile data
 	saveData.push_back("<profile>");
 	saveData.push_back(player.getProfileName);
 	saveData.push_back("<character>");
 	saveData.push_back(player.getCharacterName);
 	saveData.push_back("<playerData>");
-	saveData.push_back(stoi(player.getHp));
-	saveData.push_back(stoi(player.getRed));
-	saveData.push_back(stoi(player.getBlue));
-	saveData.push_back(stoi(player.getYellow));
-	saveData.push_back(player.getGreen());
+	saveData.push_back(to_string(player.getHp()));
+	saveData.push_back(to_string(player.getRed()));
+	saveData.push_back(to_string(player.getBlue()));
+	saveData.push_back(to_string(player.getYellow())); 
+	saveData.push_back(to_string(player.getGreen()));
 	saveData.push_back("</playerData>");
 	saveData.push_back("<enemyData>");
-	saveData.push_back(stoi(enemy.getHp));
-	saveData.push_back(stoi(enemy.getRed));
-	saveData.push_back(stoi(enemy.getBlue));
-	saveData.push_back(stoi(enemy.getYellow));
-	saveData.push_back(stoi(enemy.getGreen));
+	saveData.push_back(to_string(enemy.getHp()));
+	saveData.push_back(to_string(enemy.getRed()));
+	saveData.push_back(to_string(enemy.getBlue()));
+	saveData.push_back(to_string(enemy.getYellow()));
+	saveData.push_back(to_string(enemy.getGreen()));
 	saveData.push_back("</enemyData>");
 	saveData.push_back("<board>");
 	saveData.push_back(board);
@@ -47,7 +46,7 @@ void saveBoard::save(vector<string> saveData) {
 	{
 		while (getline(myFile, line))
 		{
-			if (line = "<root>")
+			if (line =="<root>")
 			{
 				for (int n = 0; n < saveData.size(); n++)
 				{
