@@ -4,7 +4,7 @@
 
 GridHandle::GridHandle()
 {
-	printGrid();
+	//printGrid();
 }
 
 void GridHandle::printGrid()
@@ -141,5 +141,22 @@ void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j)
 	//call checkSwapArea()
 	//if true then make grid = temp
 	//else tell player move cannot be made
+
+}
+
+void GridHandle::readFromString(std::string r){
+	int count = 0;
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			grid[i][j] = r[count] - '0';
+			count++;
+		}
+	}
+
+	std::cout << std::endl;
+	printGrid();
+	std::cout << std::endl;
 
 }

@@ -19,6 +19,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	std::cout << hello << std::endl;
 
+	GridHandle HandleTest;
+
+	HandleTest.readFromString(hello);
+
 	return 0;
 }
 
