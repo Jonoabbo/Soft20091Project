@@ -11,9 +11,9 @@ saveBoard::saveBoard(playerClass player, enemyClass enemy, string board)
 	vector<string> saveData;
 	//Save profile data
 	saveData.push_back("<profile>");
-	saveData.push_back(player.getProfileName);
+	saveData.push_back(player.getProfileName());
 	saveData.push_back("<character>");
-	saveData.push_back(player.getCharacterName);
+	saveData.push_back(player.getCharacterName());
 	saveData.push_back("<playerData>");
 	saveData.push_back(to_string(player.getHp()));
 	saveData.push_back(to_string(player.getRed()));
@@ -56,7 +56,7 @@ void saveBoard::save(vector<string> saveData) {
 			temp.push_back(line);
 		}
 	}
-	myFile.close;
+	myFile.close();
 
 	myFile.open("gamesSaves.xml", ios::out);
 	if (myFile.is_open())
