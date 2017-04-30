@@ -64,7 +64,7 @@ void EnemyClass::adjustDifficulty(int newDiff)
 
 }
 
-EnemyClass::EnemyClass(){
+EnemyClass::EnemyClass(int newHp, int newDiff){
 	hp = 50;
 	difficulty = 5;
 }		
