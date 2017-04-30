@@ -23,6 +23,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	HandleTest.readFromString(hello);
 
+	int a, b, c, d;
+	std::cin >> a;
+	std::cin >> b;
+	std::cin >> c;
+	std::cin >> d;
+
+	HandleTest.swapPositions(a, b, c, d);
+
 	return 0;
 }
 

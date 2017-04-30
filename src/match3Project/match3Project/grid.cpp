@@ -43,16 +43,16 @@ std::vector<int> Grid::findMatchHorizontal(int row)
 		{
 			if (aCounter == 2) //Match 3 is found
 			{
-				for (int i = 2; i > 0; i--)
+				for (int i = 0; i < 3; i++)
 				{
 					matchPositions.push_back(row);
-					matchPositions.push_back(j - i);
+					matchPositions.push_back(j-i);
 				}
 				matchPositions.push_back(0);
 			}
 			else if (aCounter == 3)
 			{
-				for (int i = 3; i > 0; i--)
+				for (int i = 0; i < 4; i++)
 				{
 					matchPositions.push_back(row);
 					matchPositions.push_back(j - i);
@@ -61,7 +61,7 @@ std::vector<int> Grid::findMatchHorizontal(int row)
 			}
 			else if (aCounter == 4)
 			{
-				for (int i = 4; i > 0; i--)
+				for (int i = 0; i < 5; i++)
 				{
 					matchPositions.push_back(row);
 					matchPositions.push_back(j - i);
@@ -95,32 +95,31 @@ std::vector<int> Grid::findMatchVertical(int column)
 		{
 			if (dCounter == 2) //Match 3 is found
 			{
-				for (int j = 2; j > 0; j--)
+				for (int j = 0; j < 3; j++)
 				{
-					matchPositions.push_back(j);
-					matchPositions.push_back(i - j);
-					matchPositions.push_back(0);
+					matchPositions.push_back(i-j);
+					matchPositions.push_back(column);
 				}
+				matchPositions.push_back(0);
 			}
 			else if (dCounter == 3)
 			{
-				for (int j = 3; j > 0; j--)
+				for (int j = 0; j < 4; j++)
 				{
-					matchPositions.push_back(j);
-					matchPositions.push_back(i -j);
-					matchPositions.push_back(0);
+					matchPositions.push_back(i - j);
+					matchPositions.push_back(column);
 				}
+				matchPositions.push_back(0);
 			}
 			else if (dCounter == 4)
 			{
-				for (int j = 4; j > 0; j--)
+				for (int j = 0; j < 5; j++)
 				{
-					matchPositions.push_back(j);
-					matchPositions.push_back(i- j);
-					matchPositions.push_back(0);
+					matchPositions.push_back(i - j);
+					matchPositions.push_back(column);
 				}
+				matchPositions.push_back(0);
 			}
-
 			//reset counter
 			dCounter = 0;
 		}
