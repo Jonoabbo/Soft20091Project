@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include "gridInit.h"
 
 class GridHandle : public GridInit

@@ -88,6 +88,54 @@ int GridInit::checkForMatches()
 
 }
 
+std::vector<int> GridInit::findMatchHorizontal(int row)
+{
+	int aCounter = 0;
+	std::vector<int> matchPositions; //stores 2 ints for each position index form: {i,j} with number to separate the 'matches'
+
+	for (int j = 0; j < 8; j++)
+	{
+		//going across --->
+		if (grid[row][j] == grid[row][j + 1])
+		{
+			aCounter++;
+		}
+
+		if (grid[row][j] == grid[row][j + 1])
+		{
+			if (aCounter == 2) //Match 3 is found
+			{
+				for (int i = 2; i > 0; i--)
+				{
+					matchPositions.push_back(row);
+					matchPositions.push_back((j + 1) - i);
+				}
+			}
+			else if (aCounter == 3)
+			{
+				for (int i = 3; i > 0; i--)
+				{
+					matchPositions.push_back(row);
+					matchPositions.push_back((j + 1) - i);
+				}
+			}
+			else if (aCounter == 4)
+			{
+				for (int i = 4; i > 0; i--)
+				{
+					matchPositions.push_back(row);
+					matchPositions.push_back((j + 1) - i);
+				}
+			}
+
+			//reset counter
+			aCounter = 0;
+			grid[row][j + 1] = rand() % 5 + 1;
+			//nMatchesFound++;
+		}
+	}
+}
+
 // ##  PLANS FOR CHANGES TO checkForMatches() ##
 //	break when comparison isn't true
 //	check number on counter
