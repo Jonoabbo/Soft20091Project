@@ -22,17 +22,17 @@ void GridInit::createGrid()
 	}
 
 	//check grid for existing matches
-	int con = checkForMatches();
+	int con = preventThrees();
 
 	while (con != 0)
 	{
-		con = checkForMatches();
+		con = preventThrees();
 		std::cout << con << std::endl;
 	}
 
 }
 
-int GridInit::checkForMatches()
+int GridInit::preventThrees()
 {
 	//search each row
 	//counter

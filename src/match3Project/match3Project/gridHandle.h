@@ -21,8 +21,6 @@ public:
 	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j );
 
 private:
-
-
 	//drop down tiles -- performs 'bubble sort'
 	void dropDown();
 	//algorithm used in dropDown()
@@ -39,5 +37,8 @@ private:
 
 	//OLIVER TO IMPLEMENT -- you handle this part
 	void checkForPossibleSwaps();
+
+	//sets given position to zero
+	void setPosZero(int i, int j);
 
 };

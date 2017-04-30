@@ -6,7 +6,8 @@ public:
 	//initialises grid
 	GridInit();
 
-	int checkForMatches();
+private:
+	int preventThrees();
 
 	void createGrid();
 };

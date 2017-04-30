@@ -7,7 +7,7 @@ private:
 	std::string profile;
 	std::string character;
 	std::string getProfileName();
-	playerClass(string profileName, string characterName);
+	playerClass(std::string profileName, std::string characterName);
 	std::string getCharacterName();
 protected:
 	int hp, red, blue, green, yellow;
