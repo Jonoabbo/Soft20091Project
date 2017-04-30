@@ -1,7 +1,7 @@
 #include <iostream>
-#include "gridInit.h"
+#include "grid.h"
 
-class GridHandle : public GridInit
+class GridHandle : public Grid
 {
 public:
 	//init grid handle
@@ -9,6 +9,9 @@ public:
 
 	//test -- print grid
 	void printGrid();
+
+	//createGridFromString
+	void readFromString();
 
 	//swap two positions
 	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j );
@@ -26,5 +29,8 @@ public:
 
 	//sets removed blocks to 0 then calls dropDown
 	void removeFromGrid();
+
+	//OLIVER TO IMPLEMENT -- you handle this part
+	void checkForPossibleSwaps();
 
 };

@@ -2,6 +2,8 @@
 //
 
 #include "stdafx.h"
+#include "grid.h"
+#include "gridInit.h"
 #include "gridHandle.h"
 #include <string>
 #include <time.h>
@@ -11,9 +13,12 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	GridHandle handleTest;
-	
-	handleTest.dropDown();
+	GridInit test;
+
+	std::string hello = test.writeToString();
+
+	std::cout << hello << std::endl;
+
 	return 0;
 }
 
