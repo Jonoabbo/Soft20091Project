@@ -160,3 +160,14 @@ void GridHandle::readFromString(std::string r){
 	std::cout << std::endl;
 
 }
+
+void GridHandle::checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j)
+{
+	std::vector<int> checkedLines[3];
+
+	if (pos1i == pos2i)
+	{
+		//horizontal swap
+		findMatchHorizontal(pos1i);
+	}
+}

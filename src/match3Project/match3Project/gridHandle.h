@@ -26,9 +26,6 @@ private:
 	//algorithm used in dropDown()
 	void dropSortAlgorithm(int index);
 
-	//weighting handling
-	void weighting();
-
 	//check area around where swap is made and remove match
 	void checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j);
 
