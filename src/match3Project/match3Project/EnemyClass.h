@@ -4,11 +4,8 @@
 
 class enemyClass: public playerClass
 {	
-private:
-	int difficulty;
-	
 public:
-	
+	int difficulty;
 	int weighting(int tile, int size);
 	void adjustDifficulty(int);
 
