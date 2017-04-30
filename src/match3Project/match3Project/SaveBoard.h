@@ -3,7 +3,7 @@
 #include "PlayerClass.h"
 #include "SaveFile.h"
 #include <string>
-
+#include <vector>
 using namespace std;
 
 class saveBoard {
@@ -12,5 +12,6 @@ class saveBoard {
 	string board;
 
 	saveBoard(playerClass, enemyClass, string board);
+	void save(vector<string> saveData);
 
 };
