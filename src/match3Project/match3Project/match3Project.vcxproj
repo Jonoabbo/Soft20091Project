@@ -84,6 +84,8 @@
     <ClInclude Include="gridHandle.h" />
     <ClInclude Include="gridInit.h" />
     <ClInclude Include="PlayerClass.h" />
+    <ClInclude Include="SaveBoard.h" />
+    <ClInclude Include="SaveFile.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -94,6 +96,7 @@
     <ClCompile Include="gridInit.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerClass.cpp" />
+    <ClCompile Include="SaveBoard.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
