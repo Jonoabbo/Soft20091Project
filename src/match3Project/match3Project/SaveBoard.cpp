@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "SaveBoard.h"
 #include <string>
 
