@@ -48,7 +48,8 @@ std::vector<int> Grid::findMatchHorizontal(int row)
 					matchPositions.push_back(row);
 					matchPositions.push_back(j-i);
 				}
-				matchPositions.push_back(0);
+				matchPositions.push_back(9);
+				matchPositions.push_back(9);
 			}
 			else if (aCounter == 3)
 			{
@@ -57,7 +58,8 @@ std::vector<int> Grid::findMatchHorizontal(int row)
 					matchPositions.push_back(row);
 					matchPositions.push_back(j - i);
 				}
-				matchPositions.push_back(0);
+				matchPositions.push_back(9);
+				matchPositions.push_back(9);
 			}
 			else if (aCounter == 4)
 			{
@@ -66,7 +68,8 @@ std::vector<int> Grid::findMatchHorizontal(int row)
 					matchPositions.push_back(row);
 					matchPositions.push_back(j - i);
 				}
-				matchPositions.push_back(0);
+				matchPositions.push_back(9);
+				matchPositions.push_back(9);
 			}
 
 			//reset counter
@@ -100,7 +103,8 @@ std::vector<int> Grid::findMatchVertical(int column)
 					matchPositions.push_back(i-j);
 					matchPositions.push_back(column);
 				}
-				matchPositions.push_back(0);
+				matchPositions.push_back(9);
+				matchPositions.push_back(9);
 			}
 			else if (dCounter == 3)
 			{
@@ -109,7 +113,8 @@ std::vector<int> Grid::findMatchVertical(int column)
 					matchPositions.push_back(i - j);
 					matchPositions.push_back(column);
 				}
-				matchPositions.push_back(0);
+				matchPositions.push_back(9);
+				matchPositions.push_back(9);
 			}
 			else if (dCounter == 4)
 			{
@@ -118,7 +123,8 @@ std::vector<int> Grid::findMatchVertical(int column)
 					matchPositions.push_back(i - j);
 					matchPositions.push_back(column);
 				}
-				matchPositions.push_back(0);
+				matchPositions.push_back(9);
+				matchPositions.push_back(9);
 			}
 			//reset counter
 			dCounter = 0;

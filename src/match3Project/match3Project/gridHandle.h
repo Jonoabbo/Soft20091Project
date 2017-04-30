@@ -9,8 +9,6 @@ public:
 	//init grid handle
 	GridHandle();
 
-	GridHandle(playerClass p, enemyClass e);
-
 	//test -- print grid
 	void printGrid();
 
@@ -18,7 +16,7 @@ public:
 	void readFromString(std::string r);
 
 	//swap two positions
-	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j );
+	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j, playerClass p, enemyClass e);
 
 private:
 	//drop down tiles -- performs 'bubble sort'
@@ -38,6 +36,6 @@ private:
 	//sets given position to zero
 	void setPosZero(int i, int j);
 
-	void incrementResource(int resource);
+	void incrementResource(int resource, playerClass p, enemyClass e);
 
 };

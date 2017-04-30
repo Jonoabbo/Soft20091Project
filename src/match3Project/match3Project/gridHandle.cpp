@@ -7,8 +7,6 @@ GridHandle::GridHandle()
 	//do nothing
 }
 
-
-
 void GridHandle::printGrid()
 {
 	for (int i = 0; i < 8; i++)
@@ -178,15 +176,22 @@ bool GridHandle::checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j)
 			{
 				for (int j = 0; j < checkedLines[i].size(); j++)
 				{
-					std::cout << checkedLines[i][j] << std::endl;
+					std::cout << checkedLines[i][j] << " ";
 				}
+
+				for (int j = 0; j < checkedLines[i].size(); j += 2)
+				{
+					std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " is: " << grid[checkedLines[i][j]][checkedLines[i][j + 1]] << std::endl;
+					if (checkedLines[i][j] == 9) break;
+				}
+
 			}
 		}
 	}
 
 }
 
-void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j)
+void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j, playerClass p, enemyClass e)
 {
 	//perform swap
 	int temp = grid[pos1i][pos1j];
@@ -210,7 +215,7 @@ void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j)
 	}
 }
 
-void GridHandle::incrementResource(int resource)
+void GridHandle::incrementResource(int resource, playerClass p, enemyClass e)
 {
 	//switch (resource)
 	//{

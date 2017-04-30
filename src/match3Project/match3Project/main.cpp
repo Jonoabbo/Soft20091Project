@@ -20,6 +20,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cout << hello << std::endl;
 
 	GridHandle HandleTest;
+	playerClass player;
+	enemyClass enemy;
 
 	HandleTest.readFromString(hello);
 
@@ -29,7 +31,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cin >> c;
 	std::cin >> d;
 
-	HandleTest.swapPositions(a, b, c, d);
+	HandleTest.swapPositions(a, b, c, d, player, enemy);
 
 	return 0;
 }
