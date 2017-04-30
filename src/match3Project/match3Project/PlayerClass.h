@@ -3,7 +3,7 @@
 
 class playerClass
 {
-private:
+protected:
 	int hp, red, blue, green, yellow;
 public:
 	
