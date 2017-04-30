@@ -19,17 +19,6 @@ playerClass::playerClass(string profileName,string characterName)
 		red, blue, green, yellow = 0;
 }
 
-string playerClass::getProfileName() {
-	string name;
-	 name= profile;
-	return name;
-}
-
-string playerClass::getCharacterName() {
-	string name;
-	name = character;
-	return name;
-}
 
 void playerClass::adjustHp(int newHP)
 {
@@ -51,4 +40,31 @@ void playerClass::adjustYellow(int newYellow)
 void playerClass::adjustGreen(int newGreen) 
 {
 	green = newGreen;
+}
+
+int playerClass::getHp() {
+	return hp;
+}
+
+int playerClass::getRed() {
+	return red;
+}
+
+int playerClass::getBlue() {
+	return blue;
+}
+
+int playerClass::getYellow() {
+	return yellow;
+}
+
+int playerClass::getGreen() {
+	return green;
+}
+string playerClass::getProfileName() {
+	return profile;
+}
+
+string playerClass::getCharacterName() {	
+	return character;
 }
