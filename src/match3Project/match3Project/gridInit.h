@@ -4,12 +4,14 @@
 
 class GridInit
 {
-public:
-	int grid[8][8];
-
+private:
 	//initialises grid
 	GridInit();
 
+public:
+	int grid[8][8];
+
+	
 	//search grid to find 3 4 5 matches
 	//int checkForMatch();
 
