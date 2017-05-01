@@ -14,10 +14,9 @@ loadBoard::loadBoard()
 vector<string> loadBoard::characterNames(string profileName) {
 	vector<string> names;
 	string line;
-	ifstream saveFile ("gameSaves.xml");
-	//saveFile.open;
 	bool profileFound = false;
-
+	fstream saveFile;
+	saveFile.open("gameSaves.xml", ios::in);
 	if (saveFile.is_open())
 	{
 		//Look through each line until the profile is found
@@ -54,10 +53,10 @@ vector<string> loadBoard::characterNames(string profileName) {
 };
 
 saveFile loadBoard::loadCharacter(string profileName, string charName) {
-	saveFile loadedFile;
-	fstream saveFile;
+	saveFile loadedFile;	
 	string line;
 	bool profileFound = false;
+	fstream saveFile;
 	saveFile.open("gameSaves.xml", ios::in);
 
 	if (saveFile.is_open())
