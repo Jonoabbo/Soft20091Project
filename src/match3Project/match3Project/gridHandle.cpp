@@ -234,13 +234,13 @@ void GridHandle::incrementResource(int resource)
 	//}
 }
 
-saveFile GridHandle::saveGame()
+saveFile GridHandle::saveGame(std::string test)
 {
 	saveFile temp;
 
 	temp.player = p;
 	temp.enemy = e;
-	temp.board = writeToString();
+	temp.board = test;
 
 	return temp;
 }

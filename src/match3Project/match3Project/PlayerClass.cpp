@@ -8,7 +8,7 @@ playerClass::playerClass()
 	hp = 50;
 	profile = "Default Profile";
 	character = "Default Character";
-	red, blue, green, yellow = 0;
+	red = 0, blue = 0, green = 0, yellow = 0;
 }
 
 playerClass::playerClass(string profileName,string characterName)
@@ -16,7 +16,7 @@ playerClass::playerClass(string profileName,string characterName)
 		hp = 50;
 		profile = profileName;
 		character = characterName;
-		red, blue, green, yellow = 0;
+		red = 0, blue = 0, green = 0, yellow = 0;
 }
 
 

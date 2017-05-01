@@ -71,10 +71,10 @@ int enemyClass::getDifficulty()
 enemyClass::enemyClass(){
 	hp = 50;
 	difficulty = 5;
-	red, blue, green, yellow = 0;
+	red = 0, blue = 0, green = 0, yellow = 0;
 }		
 enemyClass::enemyClass(int newHp = 0, int newDiff = 0) {
 	hp = newHp;
 	difficulty = newDiff;
-	red, blue, green, yellow = 0;
+	red = 0, blue = 0, green = 0, yellow = 0;
 }

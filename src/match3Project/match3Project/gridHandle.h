@@ -26,7 +26,7 @@ public:
 	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j);
 
 	//save the game
-	saveFile saveGame();
+	saveFile saveGame(std::string test);
 
 private:
 	//drop down tiles -- performs 'bubble sort'

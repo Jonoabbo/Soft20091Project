@@ -7,7 +7,6 @@
 
 class Grid{
 public:
-	int grid[8][8];
 
 	Grid();
 
@@ -18,4 +17,6 @@ public:
 	//writeGridToString + return
 	std::string writeToString();
 
+protected:
+	int grid[8][8];
 };

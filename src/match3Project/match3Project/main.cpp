@@ -31,9 +31,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	player.adjustYellow(12);
 	player.adjustGreen(12);
 
-	saveBoard newSave(HandleTest.saveGame());
+	
 
 	HandleTest.readFromString(hello);
+
+	saveBoard newSave(HandleTest.saveGame(hello));
 
 	int a, b, c, d;
 	std::cin >> a;
