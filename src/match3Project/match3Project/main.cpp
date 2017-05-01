@@ -7,6 +7,7 @@
 #include "gridHandle.h"
 #include "SaveFile.h"
 #include "SaveBoard.h"
+#include "LoadBoard.h"
 #include <string>
 #include <time.h>
 #include <stdlib.h>
@@ -36,6 +37,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	HandleTest.readFromString(hello);
 
 	saveBoard newSave(HandleTest.saveGame(hello));
+
+	loadBoard loadSave;
+	
+	saveFile testSaveFile;
+
+	//testSaveFile = 
+	loadSave.loadCharacter("Default Profile", "Default Character");
+
+	//std::string newString = testSaveFile.board;
+	//std::cout << "Board is: ";
+	//std::cout << newString << std::endl;
 
 	int a, b, c, d;
 	std::cin >> a;

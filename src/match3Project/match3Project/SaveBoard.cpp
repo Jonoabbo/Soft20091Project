@@ -53,7 +53,7 @@ void saveBoard::save(vector<string> saveData) {
 		while (getline(saveFile, line))
 		{
 			temp.push_back(line);
-			if (line =="<root>")
+			if (line == "<root>")
 			{
 				for (int n = 0; n < saveData.size(); n++)
 				{
@@ -63,14 +63,27 @@ void saveBoard::save(vector<string> saveData) {
 			
 		}
 	}
+ else
+ {
+	 //temp.push_back("<root>");
+	 //for (int n = 0; n < saveData.size(); n++)
+	 //{
+	//	 temp.push_back(saveData[n]);
+	 //}
+	 //temp.push_back("</root>");
+
+	 temp = saveData;
+
+ }
 	saveFile.close();
 
 	saveFile.open("gamesSaves.xml", ios::out);
 	if (saveFile.is_open())
 	{
-		for (int n = 0; n < temp.size(); n++)
+		for (int n = 0; n+1 < temp.size(); n++)
 		{
 			saveFile << temp[n];
 		}
 	}
+	saveFile.close();
 }

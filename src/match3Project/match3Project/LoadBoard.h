@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "EnemyClass.h"
 #include "PlayerClass.h"
 #include "SaveFile.h"
@@ -8,6 +7,7 @@
 using namespace std;
 
 class loadBoard {
+public:
 	loadBoard();
 
 	//Load all the character names associated with a profile

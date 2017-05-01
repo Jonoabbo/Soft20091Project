@@ -6,6 +6,11 @@
 #include <vector>
 using namespace std;
 
+loadBoard::loadBoard()
+{
+	//this
+}
+
 vector<string> loadBoard::characterNames(string profileName) {
 	vector<string> names;
 	string line;
