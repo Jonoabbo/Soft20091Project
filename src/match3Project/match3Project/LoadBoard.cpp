@@ -55,10 +55,10 @@ vector<string> loadBoard::characterNames(string profileName) {
 
 saveFile loadBoard::loadCharacter(string profileName, string charName) {
 	saveFile loadedFile;
-	ifstream saveFile;
-	saveFile.open("gameSaves.xml", ifstream::in);
+	fstream saveFile;
 	string line;
 	bool profileFound = false;
+	saveFile.open("gameSaves.xml", ios::in);
 
 	if (saveFile.is_open())
 	{
@@ -138,12 +138,12 @@ saveFile loadBoard::loadCharacter(string profileName, string charName) {
 }
 
 saveFile loadBoard::getHardest(string profileName) {
-	saveFile loadedFile;
-	ifstream saveFile;
-	saveFile.open("gameSaves.xml", ifstream::in);
+	saveFile loadedFile;	
 	string line;
 	bool profileFound = false;
 	int hardest = 6,  position, counter= 0;
+	fstream saveFile;
+	saveFile.open("gameSaves.xml", ios::in);
 
 	if (saveFile.is_open())
 	{
@@ -183,7 +183,7 @@ saveFile loadBoard::getHardest(string profileName) {
 		saveFile.close();
 
 		counter = 0;
-		saveFile.open("gameSaves.xml", ifstream::in);
+		saveFile.open("gameSaves.xml", ios::in);
 		if (saveFile.is_open())
 		{
 			//Look through each line until the profile is found
