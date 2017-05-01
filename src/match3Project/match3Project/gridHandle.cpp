@@ -192,7 +192,7 @@ bool GridHandle::checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j)
 
 }
 
-void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j, playerClass p, enemyClass e)
+void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j)
 {
 	//perform swap
 	int temp = grid[pos1i][pos1j];
@@ -216,7 +216,7 @@ void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j, playe
 	}
 }
 
-void GridHandle::incrementResource(int resource, playerClass p, enemyClass e)
+void GridHandle::incrementResource(int resource)
 {
 	//switch (resource)
 	//{
@@ -234,7 +234,7 @@ void GridHandle::incrementResource(int resource, playerClass p, enemyClass e)
 	//}
 }
 
-saveFile GridHandle::saveGame(playerClass p, enemyClass e)
+saveFile GridHandle::saveGame()
 {
 	saveFile temp;
 

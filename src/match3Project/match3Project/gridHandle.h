@@ -7,9 +7,15 @@
 class GridHandle : public Grid
 {
 public:
-	//init grid handle
-	GridHandle();
 
+	playerClass p;
+	enemyClass e;
+	//default constructor grid handle
+	GridHandle();
+	//If not loading a save file
+	GridHandle(playerClass& p, enemyClass& e);
+	//if loading a save file
+	GridHandle(playerClass& p, enemyClass& e, string board);
 	//test -- print grid
 	void printGrid();
 
@@ -17,7 +23,7 @@ public:
 	void readFromString(std::string r);
 
 	//swap two positions
-	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j, playerClass p, enemyClass e);
+	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j);
 
 	//save the game
 	saveFile saveGame(playerClass p, enemyClass e);
@@ -40,5 +46,5 @@ private:
 	//sets given position to zero
 	void setPosZero(int i, int j);
 
-	void incrementResource(int resource, playerClass p, enemyClass e);
+	void incrementResource(int resource);
 };
