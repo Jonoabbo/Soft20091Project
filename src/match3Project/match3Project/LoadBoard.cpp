@@ -14,8 +14,8 @@ loadBoard::loadBoard()
 vector<string> loadBoard::characterNames(string profileName) {
 	vector<string> names;
 	string line;
-	ifstream saveFile;
-	saveFile.open("gameSaves.xml");
+	ifstream saveFile ("gameSaves.xml");
+	//saveFile.open;
 	bool profileFound = false;
 
 	if (saveFile.is_open())
