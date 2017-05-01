@@ -84,6 +84,7 @@
     <ClInclude Include="gridHandle.h" />
     <ClInclude Include="gridInit.h" />
     <ClInclude Include="LoadBoard.h" />
+    <ClInclude Include="Move.h" />
     <ClInclude Include="PlayerClass.h" />
     <ClInclude Include="SaveBoard.h" />
     <ClInclude Include="SaveFile.h" />

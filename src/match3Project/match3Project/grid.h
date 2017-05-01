@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Move.h";
 #include <iostream>
 #include <vector>
 #include <time.h>
@@ -14,6 +14,7 @@ public:
 
 	std::vector<int> findMatchVertical(int column);
 
+	std::vector<Move> getMoves();
 	//writeGridToString + return
 	std::string writeToString();
 

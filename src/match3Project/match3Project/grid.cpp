@@ -134,3 +134,130 @@ std::vector<int> Grid::findMatchVertical(int column)
 	return matchPositions;
 
 }
+
+std::vector<Move> Grid::getMoves(){
+	std::vector<Move> moves;
+	Move temp;
+	int tile, tempGrid[10][10] = { 0 };
+	//reading grid into slightly larger grid with a buffer of -1's around it to allow for easy comparison
+	for (int i = 1; i < 10;i++)
+	{
+		for (int j = 1; j < 10; j++)
+		{
+			tempGrid[i][j] == grid[i - 1][j - 1];
+		}
+	}
+	for (int j = 1; j < 8; j++)
+	{
+		for (int i = 1; i < 8; i++)
+		{
+			temp.firstX = 0;
+			temp.firstY = 0;
+			temp.secondX = 0;
+			temp.secondY = 0;
+			temp.tile = 0;
+			temp.size = 0;
+			tile = tempGrid[i][j];
+			//for every co-ordinate in the grid
+			if (tile == tempGrid[i + 1][j] || tempGrid[i][j] == tempGrid[i + 2][j])
+			{
+				if (tile == tempGrid[i+2][j])
+				{
+					if (tile == tempGrid[i+1][j - 1])
+					{
+						temp.firstX = i;
+						temp.firstY = j;
+						temp.secondX = i + 1;
+						temp.secondY = j-1;
+						temp.tile = tile;
+						
+						if(tile == tempGrid[i+3][j])
+						{
+								temp.size = 4;
+
+						}
+						else if(tile == tempGrid[i-1][j])
+						{
+							temp.size = 4;
+						}
+						else 
+						{
+							temp.size = 3;
+						}
+					} else if (tile == tempGrid[i + 1][j + 1])
+					{
+						temp.firstX = i;
+						temp.firstY = j;
+						temp.secondX = i + 1;
+						temp.secondY = j + 1;
+						temp.tile = tile;
+
+						if (tile == tempGrid[i + 3][j])
+						{
+							temp.size = 4;							
+						}
+						else if(tile == tempGrid[i - 1][j])
+						{
+							temp.size = 4;
+						}
+						else
+						{
+							temp.size = 3;
+						}
+					}///
+					else
+					{
+						if (tile ==tempGrid[i+2][j-1])//x10/x20/x03
+						{
+							temp.firstX = i;
+							temp.firstY = j;
+							temp.secondX = i + 2;
+							temp.secondY = j - 1;
+							temp.tile = tile;
+							if (tile == tempGrid[i+3][j])
+							{
+								if (tile == tempGrid[i + 4][j])
+								{
+									temp.size = 5;
+								}
+								else
+								{
+									temp.size = 4;
+								}
+							}
+							else
+							{
+								temp.size = 3;
+							}
+						}
+						else if (tile == tempGrid[i + 2][j + 1])
+						{
+							temp.firstX = i;
+							temp.firstY = j;
+							temp.secondX = i + 2;
+							temp.secondY = j - 1;
+							temp.tile = tile;
+							if (tile == tempGrid[i + 3][j])
+							{
+								if (tile == tempGrid[i + 4][j])
+								{
+									temp.size = 5;
+								}
+								else
+								{
+									temp.size = 4;
+								}
+							}
+							else
+							{
+								temp.size = 3;
+							}
+						}
+					}					
+				}
+			}
+			moves.push_back(temp);
+		}
+	}
+	return moves;
+}
