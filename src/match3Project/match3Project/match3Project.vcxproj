@@ -83,6 +83,7 @@
     <ClInclude Include="grid.h" />
     <ClInclude Include="gridHandle.h" />
     <ClInclude Include="gridInit.h" />
+    <ClInclude Include="LoadBoard.h" />
     <ClInclude Include="PlayerClass.h" />
     <ClInclude Include="SaveBoard.h" />
     <ClInclude Include="SaveFile.h" />
@@ -94,6 +95,7 @@
     <ClCompile Include="grid.cpp" />
     <ClCompile Include="gridHandle.cpp" />
     <ClCompile Include="gridInit.cpp" />
+    <ClCompile Include="LoadBoard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerClass.cpp" />
     <ClCompile Include="SaveBoard.cpp" />

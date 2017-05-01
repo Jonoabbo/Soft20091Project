@@ -45,6 +45,9 @@
     <ClInclude Include="SaveFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LoadBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +72,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SaveBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
