@@ -5,6 +5,8 @@
 #include "grid.h"
 #include "gridInit.h"
 #include "gridHandle.h"
+#include "SaveFile.h"
+#include "SaveBoard.h"
 #include <string>
 #include <time.h>
 #include <stdlib.h>
@@ -23,6 +25,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	playerClass player;
 	enemyClass enemy;
 
+	//testing
+	player.adjustRed(12);
+	player.adjustBlue(12);
+	player.adjustYellow(12);
+	player.adjustGreen(12);
+
 	HandleTest.readFromString(hello);
 
 	int a, b, c, d;
@@ -32,6 +40,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cin >> d;
 
 	HandleTest.swapPositions(a, b, c, d, player, enemy);
+
+
 
 	return 0;
 }

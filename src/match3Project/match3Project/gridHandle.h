@@ -1,6 +1,7 @@
 #include <iostream>
 #include "grid.h"
 #include "PlayerClass.h"
+#include "SaveFile.h"
 #include "EnemyClass.h"
 
 class GridHandle : public Grid
@@ -17,6 +18,9 @@ public:
 
 	//swap two positions
 	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j, playerClass p, enemyClass e);
+
+	//save the game
+	saveFile saveGame(playerClass p, enemyClass e);
 
 private:
 	//drop down tiles -- performs 'bubble sort'
@@ -37,5 +41,4 @@ private:
 	void setPosZero(int i, int j);
 
 	void incrementResource(int resource, playerClass p, enemyClass e);
-
 };

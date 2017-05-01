@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GridHandle.h"
+#include "SaveFile.h"
 
 
 GridHandle::GridHandle()
@@ -231,4 +232,15 @@ void GridHandle::incrementResource(int resource, playerClass p, enemyClass e)
 	//case 5:
 	//	//damage
 	//}
+}
+
+saveFile GridHandle::saveGame(playerClass p, enemyClass e)
+{
+	saveFile temp;
+
+	temp.player = p;
+	temp.enemy = e;
+	temp.board = writeToString();
+
+	return temp;
 }
