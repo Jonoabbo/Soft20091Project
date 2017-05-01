@@ -31,6 +31,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	player.adjustYellow(12);
 	player.adjustGreen(12);
 
+	saveBoard newSave(HandleTest.saveGame(player, enemy));
+
 	HandleTest.readFromString(hello);
 
 	int a, b, c, d;
