@@ -11,7 +11,7 @@ class saveBoard {
 	enemyClass enemy;
 	string board;
 	saveBoard();
-	saveBoard(struct saveFile);
+	saveBoard(saveFile);
 	void save(vector<string> saveData);
 
 };

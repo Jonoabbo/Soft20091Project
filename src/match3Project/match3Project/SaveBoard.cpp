@@ -10,7 +10,7 @@ saveBoard::saveBoard() {
 
 }
 
-saveBoard::saveBoard(struct saveFile saveF)
+saveBoard::saveBoard(saveFile saveF)
 {
 	
 	vector<string> saveData;
