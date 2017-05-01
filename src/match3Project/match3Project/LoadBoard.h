@@ -6,6 +6,16 @@
 #include <string>
 #include <vector>
 using namespace std;
-class loadBoard {
 
+class loadBoard {
+	loadBoard();
+
+	//Load all the character names associated with a profile
+	vector<string> characterNames(string profileName);
+
+	//Return save file associated with a character name
+	saveFile loadCharacter(string profileName, string charName);
+
+	//Return the save with the longest run
+	saveFile getHardest(string profileName);
 };
