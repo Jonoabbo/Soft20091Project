@@ -82,7 +82,7 @@ void saveBoard::save(vector<string> saveData) {
 	{
 		for (int n = 0; n+1 < temp.size(); n++)
 		{
-			saveFile << temp[n];
+			saveFile << temp[n] + "/n";
 		}
 	}
 	saveFile.close();

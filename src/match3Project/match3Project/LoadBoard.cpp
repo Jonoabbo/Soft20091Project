@@ -53,7 +53,7 @@ vector<string> loadBoard::characterNames(string profileName) {
 	return names;
 };
 
-saveFile loadCharacter(string profileName, string charName) {
+saveFile loadBoard::loadCharacter(string profileName, string charName) {
 	saveFile loadedFile;
 	ifstream saveFile;
 	saveFile.open("gameSaves.xml", ifstream::in);

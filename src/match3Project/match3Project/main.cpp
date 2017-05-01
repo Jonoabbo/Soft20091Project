@@ -42,12 +42,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	saveFile testSaveFile;
 
-	//testSaveFile = 
-	loadSave.loadCharacter("Default Profile", "Default Character");
+	testSaveFile = loadSave.loadCharacter("Default Profile", "Default Character");
 
-	//std::string newString = testSaveFile.board;
-	//std::cout << "Board is: ";
-	//std::cout << newString << std::endl;
+	std::string newString = testSaveFile.board;
+	std::cout << "Board is: ";
+	std::cout << newString << std::endl;
 
 	int a, b, c, d;
 	std::cin >> a;
