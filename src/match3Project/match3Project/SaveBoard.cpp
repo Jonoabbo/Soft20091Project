@@ -43,15 +43,28 @@ saveBoard::saveBoard(saveFile saveF)
 
 }
 
-void saveBoard::save(vector<string> saveData) {
+void saveBoard::save(vector<string> saveData) 
+{
 	string line;
 	vector<string> temp;
 	fstream saveFile;
-	saveFile.open("gameSaves.xml", ios::in);
+	saveFile.open("gamesSaves.xml", ios::out);
 	if (saveFile.is_open())
 	{
-		while (getline(saveFile, line))
+		getline(saveFile, line);
+		if (line.empty())
 		{
+			//if the file is empty do this
+			temp.push_back("<root>");
+			for (int n = 0; n < saveData.size(); n++)
+			{
+				temp.push_back(saveData[n]);
+			}
+			temp.push_back("</root>");
+		}
+		else
+		{
+			//if the file contains data already do this
 			temp.push_back(line);
 			if (line == "<root>")
 			{
@@ -60,21 +73,14 @@ void saveBoard::save(vector<string> saveData) {
 					temp.push_back(saveData[n]);
 				}
 			}
-			
+			while (line != "")
+			{
+				getline(saveFile, line);
+				temp.push_back(line);
+			}
 		}
 	}
- else
- {
-	 temp.push_back("<root>");
-	 for (int n = 0; n < saveData.size(); n++)
-	 {
-		 temp.push_back(saveData[n]);
-	 }
-	 temp.push_back("</root>");
 
-	 //temp = saveData;
-
- }
 	saveFile.close();
 
 	saveFile.open("gamesSaves.xml", ios::out);
@@ -85,5 +91,7 @@ void saveBoard::save(vector<string> saveData) {
 			saveFile << temp[n] + "\n";
 		}
 	}
+
 	saveFile.close();
+
 }

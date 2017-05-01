@@ -32,21 +32,32 @@ int _tmain(int argc, _TCHAR* argv[])
 	player.adjustYellow(12);
 	player.adjustGreen(12);
 
-	
 
 	HandleTest.readFromString(hello);
 
 	saveBoard newSave(HandleTest.saveGame(hello));
 
-	loadBoard loadSave;
+	playerClass player1;
+	enemyClass enemy1;
+
+	GridHandle savingTest;
+
+	savingTest.readFromString(hello);
+
+	player1.setProfileName("Liam");
+	player1.setProfileName("hates life...");
+
+	saveBoard newSave2(HandleTest.saveGame(hello));
+
+	//loadBoard loadSave;
 	
-	saveFile testSaveFile;
+	//saveFile testSaveFile;
 
-	testSaveFile = loadSave.loadCharacter("Default Profile", "Default Character");
+	//testSaveFile = loadSave.loadCharacter("Default Profile", "Default Character");
 
-	std::string newString = testSaveFile.board;
-	std::cout << "Board is: ";
-	std::cout << newString << std::endl;
+	//std::string newString = testSaveFile.board;
+	//std::cout << "Board is: ";
+	//std::cout << newString << std::endl;
 
 	int a, b, c, d;
 	std::cin >> a;

@@ -26,5 +26,7 @@ public:
 	int getGreen();
 	std::string getProfileName();	
 	std::string getCharacterName();
+	void setProfileName(std::string name);
+	void setCharacterName(std::string name);
 	
 };

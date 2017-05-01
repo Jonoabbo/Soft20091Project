@@ -68,3 +68,13 @@ string playerClass::getProfileName() {
 string playerClass::getCharacterName() {	
 	return character;
 }
+
+void playerClass::setProfileName(std::string name)
+{
+	profile = name;
+}
+
+void playerClass::setCharacterName(std::string name)
+{
+	character = name;
+}
