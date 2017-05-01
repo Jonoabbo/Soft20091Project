@@ -31,7 +31,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	player.adjustYellow(12);
 	player.adjustGreen(12);
 
-	saveBoard newSave(HandleTest.saveGame(player, enemy));
+	saveBoard newSave(HandleTest.saveGame());
 
 	HandleTest.readFromString(hello);
 
@@ -41,7 +41,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cin >> c;
 	std::cin >> d;
 
-	HandleTest.swapPositions(a, b, c, d, player, enemy);
+	HandleTest.swapPositions(a, b, c, d);
 
 
 

@@ -15,7 +15,7 @@ public:
 	//If not loading a save file
 	GridHandle(playerClass& p, enemyClass& e);
 	//if loading a save file
-	GridHandle(playerClass& p, enemyClass& e, string board);
+	GridHandle(playerClass& p, enemyClass& e, std::string board);
 	//test -- print grid
 	void printGrid();
 
@@ -26,7 +26,7 @@ public:
 	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j);
 
 	//save the game
-	saveFile saveGame(playerClass p, enemyClass e);
+	saveFile saveGame();
 
 private:
 	//drop down tiles -- performs 'bubble sort'
