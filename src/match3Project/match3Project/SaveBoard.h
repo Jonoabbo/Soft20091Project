@@ -10,8 +10,9 @@ class saveBoard {
 	playerClass player;
 	enemyClass enemy;
 	string board;
+public:
+	saveBoard::saveBoard(saveFile);
 	saveBoard();
-	saveBoard(saveFile);
 	void save(vector<string> saveData);
 
 };
