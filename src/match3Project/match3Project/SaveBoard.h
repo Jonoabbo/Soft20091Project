@@ -10,7 +10,7 @@ class saveBoard {
 	playerClass player;
 	enemyClass enemy;
 	string board;
-
+	saveBoard();
 	saveBoard(struct saveFile);
 	void save(vector<string> saveData);
 

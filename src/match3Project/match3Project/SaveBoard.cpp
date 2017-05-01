@@ -6,6 +6,10 @@
 #include <vector>
 
 using namespace std;
+saveBoard::saveBoard() {
+
+}
+
 saveBoard::saveBoard(struct saveFile saveF)
 {
 	
