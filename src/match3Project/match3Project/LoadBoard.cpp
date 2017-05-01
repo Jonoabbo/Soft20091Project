@@ -37,8 +37,9 @@ vector<string> loadBoard::characterNames(string profileName) {
 				//If the line is <character>
 				if (line == "<character>")
 				{				
+					getline(saveFile, line);
 					//add the next line to the vector (always the character's name)
-					names.push_back(getline(saveFile, line));
+					names.push_back(line);
 				}
 			}
 		}
@@ -159,9 +160,9 @@ saveFile loadBoard::getHardest(string profileName) {
 		{
 			while (line != "</profile>")
 			{
-				
+
 				getline(saveFile, line);
-				if(line = "<enemyData>")
+				if (line == "<enemyData>")
 				{
 					counter++;
 					getline(saveFile, line);
@@ -174,7 +175,7 @@ saveFile loadBoard::getHardest(string profileName) {
 				}
 			}
 		}
-		saveFile.close;
+		saveFile.close();
 
 		counter = 0;
 		saveFile.open("gameSaves.xml", ifstream::in);
@@ -196,7 +197,7 @@ saveFile loadBoard::getHardest(string profileName) {
 			{
 				getline(saveFile, line);
 				if (line == "<character>")
-				{					
+				{
 					counter++;
 					if (counter == position)
 					{
@@ -231,7 +232,7 @@ saveFile loadBoard::getHardest(string profileName) {
 								getline(saveFile, line);
 								loadedFile.enemy.adjustGreen(stoi(line));
 							}
-							else if (line =="<board>")
+							else if (line == "<board>")
 							{
 								getline(saveFile, line);
 								loadedFile.board = line;
@@ -239,10 +240,12 @@ saveFile loadBoard::getHardest(string profileName) {
 						}
 					}
 				}
-				
+
 			}
 		}
+
 		saveFile.close();
+	}
 
 	return loadedFile;
 }

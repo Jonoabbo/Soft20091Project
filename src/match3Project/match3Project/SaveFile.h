@@ -4,7 +4,7 @@
 #include "PlayerClass.h"
 
 struct saveFile {
-	string board;
+	std::string board;
 	playerClass player;
 	enemyClass enemy;
 };
