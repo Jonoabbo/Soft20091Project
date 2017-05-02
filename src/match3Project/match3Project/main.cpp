@@ -147,6 +147,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				cin >> playerMove.secondI;
 				cout << "Select the J co-ordinate of the second tile";
 				cin >> playerMove.secondJ;
+				handler.swapPositions(playerMove);
 				break;
 			case 2:				
 				saving.save(handler.saveGame());
