@@ -3,6 +3,8 @@
 #include "PlayerClass.h"
 #include "SaveFile.h"
 #include "EnemyClass.h"
+#include "Move.h"
+#include <vector>
 
 class GridHandle : public Grid
 {
@@ -23,7 +25,7 @@ public:
 	void readFromString(std::string r);
 
 	//swap two positions
-	void swapPositions(int pos1i, int pos1j, int pos2i, int pos2j);
+	void swapPositions(Move, int pos1i, int pos1j, int pos2i, int pos2j);
 
 	//save the game
 	saveFile saveGame(std::string test);
@@ -35,13 +37,13 @@ private:
 	void dropSortAlgorithm(int index);
 
 	//check area around where swap is made and remove match
-	bool checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j);
+	bool checkSwapArea(Move, int pos1i, int pos1j, int pos2i, int pos2j);
 
 	//sets removed blocks to 0 then calls dropDown
 	void removeFromGrid();
 
-	//OLIVER TO IMPLEMENT -- you handle this part
-	void checkForPossibleSwaps();
+	//Choose the move from existing moves
+	Move enemyMove(std::vector<Move>);
 
 	//sets given position to zero
 	void setPosZero(int i, int j);
