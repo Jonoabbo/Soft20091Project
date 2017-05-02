@@ -42,39 +42,39 @@ vector<int> Grid::findMatchHorizontal(int row)
 
 		if (grid[row][j] != grid[row][j + 1])
 		{
-			if (aCounter == 2) //Match 3 is found
+		if (aCounter == 2) //Match 3 is found
+		{
+			for (int i = 0; i < 3; i++)
 			{
-				for (int i = 0; i < 3; i++)
-				{
-					matchPositions.push_back(row);
-					matchPositions.push_back(j-i);
-				}
-				matchPositions.push_back(9);
-				matchPositions.push_back(9);
+				matchPositions.push_back(row);
+				matchPositions.push_back(j - i);
 			}
-			else if (aCounter == 3)
+			matchPositions.push_back(9);
+			matchPositions.push_back(9);
+		}
+		else if (aCounter == 3)
+		{
+			for (int i = 0; i < 4; i++)
 			{
-				for (int i = 0; i < 4; i++)
-				{
-					matchPositions.push_back(row);
-					matchPositions.push_back(j - i);
-				}
-				matchPositions.push_back(9);
-				matchPositions.push_back(9);
+				matchPositions.push_back(row);
+				matchPositions.push_back(j - i);
 			}
-			else if (aCounter == 4)
+			matchPositions.push_back(9);
+			matchPositions.push_back(9);
+		}
+		else if (aCounter == 4)
+		{
+			for (int i = 0; i < 5; i++)
 			{
-				for (int i = 0; i < 5; i++)
-				{
-					matchPositions.push_back(row);
-					matchPositions.push_back(j - i);
-				}
-				matchPositions.push_back(9);
-				matchPositions.push_back(9);
+				matchPositions.push_back(row);
+				matchPositions.push_back(j - i);
 			}
+			matchPositions.push_back(9);
+			matchPositions.push_back(9);
+		}
 
-			//reset counter
-			aCounter = 0;
+		//reset counter
+		aCounter = 0;
 		}
 	}
 
@@ -101,7 +101,7 @@ vector<int> Grid::findMatchVertical(int column)
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					matchPositions.push_back(i-j);
+					matchPositions.push_back(i - j);
 					matchPositions.push_back(column);
 				}
 				matchPositions.push_back(9);
@@ -136,10 +136,14 @@ vector<int> Grid::findMatchVertical(int column)
 
 }
 
-vector<Move> Grid::getMoves(){
-	vector<Move> moves;
+vector<Move> Grid::getMoves() {
+	vector<Move> moves, temp;
 	moves = getHorizontalMoves(moves);
-	moves = getVerticalMoves(moves);
+	temp = getVerticalMoves(moves);
+	for (int i = 0; i < temp.size(); i++)
+	{
+		moves.push_back(temp[i]);			
+	}
 
 	return moves;
 }
