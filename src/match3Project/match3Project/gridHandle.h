@@ -12,6 +12,7 @@ public:
 
 	playerClass player;
 	enemyClass enemy;	
+	bool playersTurn = true;
 	//default constructor grid handle
 	GridHandle();
 	//If not loading a save file

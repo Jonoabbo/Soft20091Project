@@ -27,6 +27,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	enemyClass enemy;
 
 	player.setCharacterName("Jim");
+	player.setProfileName("JIMPROFILE");
 
 	//testing
 	player.adjustRed(12);

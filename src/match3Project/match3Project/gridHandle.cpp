@@ -288,7 +288,8 @@ bool GridHandle::checkSwapArea(Move moves)
 			{
 				if (matchPositions[i] == 9)
 				{
-					//ignore these ones
+					//pointless separators can be removed
+					matchPositions.erase(matchPositions.begin(), matchPositions.begin() + 1);
 				}
 				else
 				{
@@ -317,9 +318,8 @@ bool GridHandle::checkSwapArea(Move moves)
 					//set to zero
 					grid[matchPositions[i]][matchPositions[i + 1]] = 0;
 
-					//remove coords from vector
-
-					//DO THIS NOW
+					//remove coords from vector (removes first two elements)
+					matchPositions.erase(matchPositions.begin(), matchPositions.begin() + 1);
 
 				}
 			}
@@ -327,10 +327,44 @@ bool GridHandle::checkSwapArea(Move moves)
 			//float zeros to the top and replace
 			dropDown();
 
+			//assign all match coords to matchPositions again
+			//for each row
+			for (int i = 0; i < 8; i++)
+			{
+				//for each match in the vector returned by the function
+				horizontalMatches = findMatchHorizontal(i);
+				for (int i = 0; i < horizontalMatches.size(); i++)
+				{
+					matchPositions.push_back(horizontalMatches[i]);
+				}
+			}
+
+			horizontalMatches.clear();
+
+			//for each column
+			for (int i = 0; i < 8; i++)
+			{
+				//for each match in the vector returned by the function
+				verticalMatches = findMatchVertical(i);
+				for (int i = 0; i < verticalMatches.size(); i++)
+				{
+					matchPositions.push_back(verticalMatches[i]);
+				}
+			}
+
+			verticalMatches.clear();
+
 		}
 
-	}
+		//once all matches have been found
+		//give player score
 
+		player.adjustRed(red);
+		player.adjustBlue(blue);
+		player.adjustYellow(yellow);
+		player.adjustGreen(green);
+
+	}
 }
 
 void GridHandle::swapPositions(Move moves)
