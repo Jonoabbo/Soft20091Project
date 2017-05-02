@@ -126,7 +126,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int playerInput;
 	bool quit = false;
 
- while(true)
+ while(true){
 	while (handler.getPlayerHp() > 0 || handler.getEnemyHp() > 0)
 	{
 		handler.printGrid();
