@@ -100,6 +100,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	// G A M E  L O O P
 	//##########################################################
 
+
+	//everthing below this is from before and not actually needed
+
 	GridInit test;
 
 	std::string hello = test.writeToString();
