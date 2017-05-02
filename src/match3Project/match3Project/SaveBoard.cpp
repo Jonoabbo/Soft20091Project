@@ -18,7 +18,7 @@ saveBoard::saveBoard(saveFile saveF)
 	saveData.push_back("<profile>");
 	saveData.push_back(saveF.player.getProfileName());
 	saveData.push_back("<character>");
-	saveData.push_back(saveF.player.getCharacterName());
+	saveData.push_back(saveF.player.getCharacterName()); //this one 
 	saveData.push_back("<playerData>");
 	saveData.push_back(to_string(saveF.player.getHp()));
 	saveData.push_back(to_string(saveF.player.getRed()));
@@ -37,7 +37,7 @@ saveBoard::saveBoard(saveFile saveF)
 	saveData.push_back("<board>");
 	saveData.push_back(saveF.board);
 	saveData.push_back("</board>");	
-	saveData.push_back("</character>");
+	saveData.push_back("</character>"); //to this one
 	saveData.push_back("</profile>");
 	save(saveData);
 
@@ -49,46 +49,84 @@ void saveBoard::save(vector<string> saveData)
 	vector<string> temp;
 
 	//player name
-	string playerName = saveData[3];
+	string playerChar = saveData[3];
 	//player profile
 	string playerProfile = saveData[1];
-
+	bool profileExists;
 	fstream saveFile;
+
 	saveFile.open("gamesSaves.xml", ios::in);
 	if (saveFile.is_open())
 	{
 		//if the file contains data already do this
 		getline(saveFile, line);
-		temp.push_back(line);
+		//temp.push_back(line);
 		if (line == "<root>")
 		{
 			//Look through each line until the profile is found
 			while (getline(saveFile, line))
 			{
-				if (line == "<profile>")
-				{
-					getline(saveFile, line);
-					if (line == playerProfile)
-					{
-						//profile already exists
-						cout << "Profile already exists" << endl;
-						break;
+				//temp.push_back(line); 
 
-						getline(saveFile, line);
-						if (line == "<character>")
+				if (line == playerProfile)
+				{
+					//profile already exists
+					cout << "Profile already exists" << endl;
+					profileExists = true;
+					break;
+				}
+				else
+				{
+					profileExists = false;
+					break;
+				}
+			}
+			saveFile.close();
+
+			saveFile.open("gamesSaves.xml", ios::in);
+			if (saveFile.is_open())
+			{
+
+			}
+
+			getline(saveFile, line);
+			temp.push_back(line);
+
+			while (getline(saveFile, line))
+			{
+				if (line == playerChar)
+				{
+					//character already exists
+					cout << "Player name already exists." << endl;
+					cout << "Updating current save." << endl;
+
+					//add from saveData
+					for (int i = 3; i < 23; i++)
+					{
+						temp.push_back(saveData[i]);
+					}
+
+				}
+				else
+				{
+					//character doesn't exist
+
+					//read existing file
+					while (getline(saveFile, line))
+					{
+						temp.push_back(line);
+
+						if (line == "</character>" )
 						{
-							while (getline(saveFile, line))
+							//add from saveData
+							for (int i = 3; i < 23; i++)
 							{
-								if (line == playerName)
-								{
-									cout << "Player name already exists." << endl;
-									cout << "Updating current save." << endl;
-								}
+								temp.push_back(saveData[i]);
 							}
 						}
-
-						break;
 					}
+
+
 				}
 			}
 
@@ -109,7 +147,6 @@ void saveBoard::save(vector<string> saveData)
 			}
 		}
 		saveFile.close();
-
 	}
 	else
 	{
