@@ -129,9 +129,11 @@ int _tmain(int argc, _TCHAR* argv[])
  while(true){
 	while (handler.getPlayerHp() > 0 || handler.getEnemyHp() > 0)
 	{
-		handler.printGrid();
+		cout << "Who's turn?  " << handler.playersTurn << endl;
+		
 		if (handler.playersTurn == true)
 		{
+			handler.printGrid();
 			cout << "What would you like to do?" << endl;
 			cout << "1: Make Move" << endl;
 			cout << "2: Save game" << endl;
@@ -161,14 +163,17 @@ int _tmain(int argc, _TCHAR* argv[])
 			case 3:
 				cout << "PlayerHp: " << handler.getPlayerHp() << endl;
 				cin >> playerInput;
+				break;
 			case 4:
-				cout << "EnemyHp: " << handler.getPlayerHp() << endl;
+				cout << "EnemyHp: " << handler.getEnemyHp() << endl;
 				cin >> playerInput;
+				break;
 
 			}
 		}
 		else
 		{
+			cout << "Enemy's Turn" << endl;
 			handler.enemyMove(handler.getMoves());
 		}
 		

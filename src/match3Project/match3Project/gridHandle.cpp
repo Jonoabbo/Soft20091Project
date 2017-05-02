@@ -424,6 +424,7 @@ else
 	}
 }
 	}
+	return true;
 }
 
 void GridHandle::swapPositions(Move moves)
