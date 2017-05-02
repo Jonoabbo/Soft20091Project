@@ -40,14 +40,9 @@ void saveBoard::saveVector(vector<string> saveData, string profileName, string c
 {
 	string line;
 	vector<string> temp;
-
-	//character name
-	string playerChar = saveData[3];
-	//profile name
-	string playerProfile = saveData[1];
 	
 	fstream saveFile;
-	saveFile.open("gamesSaves.xml", ios::in);
+	saveFile.open("gameSaves.xml", ios::in);
 	if (saveFile.is_open())
 	{
 		while (getline(saveFile, line))
@@ -81,8 +76,9 @@ void saveBoard::saveVector(vector<string> saveData, string profileName, string c
 			}
 		}
 	}	
+	saveFile.close();
 
-	saveFile.open("gamesSaves.xml", ios::out);
+	saveFile.open("gameSaves.xml", ios::out);
 	if (saveFile.is_open())
 	{
 		for (int n = 0; n < temp.size(); n++)

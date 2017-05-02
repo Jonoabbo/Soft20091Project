@@ -26,8 +26,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	playerClass player;
 	enemyClass enemy;
 
-	player.setCharacterName("Jim");
-	player.setProfileName("JIMPROFILE");
+	player.setCharacterName("FUCKER");
+	player.setProfileName("KEV");
 
 	//testing
 	player.adjustRed(12);
@@ -36,6 +36,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	player.adjustGreen(12);
 
 	saveFile newSave;
+	saveFile saveLoadTest;
 
 	newSave.player = player;
 	newSave.enemy = enemy;
@@ -45,13 +46,17 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Board.addProfile(player.getProfileName());
 	Board.addCharacter(player.getProfileName(), player.getCharacterName());
-	//Board.save(newSave);
+	Board.save(newSave);
 
 	HandleTest.readFromString(hello);
 
 	//saveBoard newSave2(HandleTest.saveGame(hello));
 
-	//loadBoard loadSave;
+	loadBoard loadSave;
+
+	saveLoadTest = loadSave.loadCharacter(player.getProfileName(), player.getCharacterName());
+
+	std::cout << saveLoadTest.player.getCharacterName() << std::endl;
 	
 	//saveFile testSaveFile;
 
