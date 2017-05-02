@@ -250,6 +250,7 @@ bool GridHandle::checkSwapArea(Move moves)
 		//stores the positions of all matches
 		std::vector<int> matchPositions;
 
+		//stores the coords of a matches from each line
 		std::vector<int> verticalMatches;
 		std::vector<int> horizontalMatches;
 
@@ -365,6 +366,43 @@ bool GridHandle::checkSwapArea(Move moves)
 			player.adjustBlue(blue);
 			player.adjustYellow(yellow);
 			player.adjustGreen(green);
+			enemy.adjustHp(-damage);
+		}
+		else
+		{
+			enemy.adjustRed(red);
+			enemy.adjustBlue(blue);
+			enemy.adjustYellow(yellow);
+			enemy.adjustGreen(green);
+			player.adjustHp(-damage);
+		}
+
+		//set next players turn
+		if (playersTurn)
+		{
+			if (matchSize > 3)
+			{
+				//stays the same
+				playersTurn = true;
+			}
+			else
+			{
+				//swaps to enemies turn
+				playersTurn = false;
+			}
+		}
+		else
+		{
+			if (matchSize > 3)
+			{
+				//stays the same
+				playersTurn = false;
+			}
+			else
+			{
+				//swaps to enemies turn
+				playersTurn = false;
+			}
 		}
 	}
 }
