@@ -132,7 +132,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "Who's turn?  " << handler.playersTurn << endl;
 		
 		//if (handler.playersTurn == true)
-		//{
+		{
 			handler.printGrid();
 			cout << "What would you like to do?" << endl;
 			cout << "1: Make Move" << endl;
