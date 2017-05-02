@@ -359,11 +359,13 @@ bool GridHandle::checkSwapArea(Move moves)
 		//once all matches have been found
 		//give player score
 
-		player.adjustRed(red);
-		player.adjustBlue(blue);
-		player.adjustYellow(yellow);
-		player.adjustGreen(green);
-
+		if (playersTurn)
+		{
+			player.adjustRed(red);
+			player.adjustBlue(blue);
+			player.adjustYellow(yellow);
+			player.adjustGreen(green);
+		}
 	}
 }
 
