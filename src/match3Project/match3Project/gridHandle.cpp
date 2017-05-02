@@ -157,9 +157,9 @@ void GridHandle::dropSortAlgorithm(int index)
 
 void GridHandle::readFromString(std::string r){
 	int count = 0;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 9; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 9; j++)
 		{
 			grid[i][j] = r[count] - '0';
 			count++;
