@@ -11,9 +11,10 @@ class saveBoard : public fileHandler {
 	playerClass player;
 	enemyClass enemy;
 	string board;
+	void saveVector(vector<string> saveData, string profileName, string characterName);
 public:
-	saveBoard::saveBoard(saveFile);
+	void save(saveFile);
 	saveBoard();
-	void save(vector<string> saveData, string profileName, string characterName);
+	
 
 };

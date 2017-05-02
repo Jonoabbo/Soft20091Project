@@ -10,7 +10,7 @@ saveBoard::saveBoard() {
 
 }
 
-saveBoard::saveBoard(saveFile saveF)
+saveBoard::save(saveFile saveF)
 {
 	
 	vector<string> saveData;
@@ -33,11 +33,11 @@ saveBoard::saveBoard(saveFile saveF)
 	saveData.push_back("<board>");
 	saveData.push_back(saveF.board);
 	saveData.push_back("</board>");
-	save(saveData,saveF.player.getProfileName, saveF.player.getCharacterName);
+	saveVector(saveData,saveF.player.getProfileName, saveF.player.getCharacterName);
 
 }
 
-void saveBoard::save(vector<string> saveData, string profileName, string characterName)
+void saveBoard::saveVector(vector<string> saveData, string profileName, string characterName)
 {
 	string line;
 	vector<string> temp;
@@ -81,16 +81,7 @@ void saveBoard::save(vector<string> saveData, string profileName, string charact
 
 			}
 		}
-	}	else
-	{
-		//if the file is empty do this
-		temp.push_back("<root>");
-		for (int n = 0; n < saveData.size(); n++)
-		{
-			temp.push_back(saveData[n]);
-		}
-		temp.push_back("</root>");
-	}
+	}	
 
 	saveFile.open("gamesSaves.xml", ios::out);
 	if (saveFile.is_open())
