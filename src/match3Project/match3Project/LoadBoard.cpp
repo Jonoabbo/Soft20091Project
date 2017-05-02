@@ -11,46 +11,6 @@ loadBoard::loadBoard()
 	//this
 }
 
-vector<string> loadBoard::characterNames(string profileName) {
-	vector<string> names;
-	string line;
-	bool profileFound = false;
-	fstream saveFile;
-	saveFile.open("gameSaves.xml", ios::in);
-	if (saveFile.is_open())
-	{
-		//Look through each line until the profile is found
-		while (getline(saveFile, line))
-		{
-			if (line == "<profile>")
-			{
-				getline(saveFile, line);
-				if ( line == profileName)
-				{
-					profileFound = true;
-					break;
-				}
-			}
-		}
-
-		if(profileFound == true)
-		{ 
-			//go through every line in the profile
-			while (line != "</profile>")
-			{
-				//If the line is <character>
-				if (line == "<character>")
-				{				
-					getline(saveFile, line);
-					//add the next line to the vector (always the character's name)
-					names.push_back(line);
-				}
-			}
-		}
-	}
-	saveFile.close();
-	return names;
-};
 
 saveFile loadBoard::loadCharacter(string profileName, string charName) {
 	saveFile loadedFile;	

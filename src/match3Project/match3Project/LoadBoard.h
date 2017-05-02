@@ -10,10 +10,7 @@ using namespace std;
 class loadBoard : public fileHandler {
 public:
 	loadBoard();
-
-	//Load all the character names associated with a profile
-	vector<string> characterNames(string profileName);
-
+	
 	//Return save file associated with a character name
 	saveFile loadCharacter(string profileName, string charName);
 

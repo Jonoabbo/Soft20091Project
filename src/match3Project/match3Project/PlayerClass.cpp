@@ -22,24 +22,24 @@ playerClass::playerClass(string profileName,string characterName)
 
 void playerClass::adjustHp(int newHP)
 {
-	hp = newHP;
+	hp += newHP;
 }
 
 void playerClass::adjustRed(int newRed)
 {
-	red = newRed;
+	red += newRed;
 }
 void playerClass::adjustBlue(int newBlue) {
-	blue = newBlue;
+	blue += newBlue;
 }
 void playerClass::adjustYellow(int newYellow) 
 {
-	yellow = newYellow;
+	yellow += newYellow;
 }
 
 void playerClass::adjustGreen(int newGreen) 
 {
-	green = newGreen;
+	green += newGreen;
 }
 
 int playerClass::getHp() {

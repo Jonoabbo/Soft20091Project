@@ -60,7 +60,7 @@ int enemyClass::weighting(int tile, int size)
 	}
 void enemyClass::adjustDifficulty(int newDiff)
 {
-	difficulty = newDiff;
+	difficulty -= newDiff;
 
 }
 int enemyClass::getDifficulty()
