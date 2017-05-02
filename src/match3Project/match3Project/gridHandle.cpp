@@ -365,56 +365,56 @@ bool GridHandle::checkSwapArea(Move moves)
 		}
 
 		//once all matches have been found
-		//give player score
+//give player score
 
-		if (playersTurn)
-		{
-			player.adjustRed(red);
-			std::cout << "player gained " << red << " red!" << std::endl;
-			player.adjustBlue(blue);
-			std::cout << "player gained " << blue << " blue!" << std::endl;
-			player.adjustYellow(yellow);
-			std::cout << "player gained " << yellow << " yellow!" << std::endl;
-			player.adjustGreen(green);
-			std::cout << "player gained " << green << " green!" << std::endl;
-			enemy.adjustHp(-damage);
-		}
-		else
-		{
-			enemy.adjustRed(red);
-			enemy.adjustBlue(blue);
-			enemy.adjustYellow(yellow);
-			enemy.adjustGreen(green);
-			player.adjustHp(-damage);
-		}
+if (playersTurn)
+{
+	player.adjustRed(red);
+	std::cout << "player gained " << red << " red!" << std::endl;
+	player.adjustBlue(blue);
+	std::cout << "player gained " << blue << " blue!" << std::endl;
+	player.adjustYellow(yellow);
+	std::cout << "player gained " << yellow << " yellow!" << std::endl;
+	player.adjustGreen(green);
+	std::cout << "player gained " << green << " green!" << std::endl;
+	enemy.adjustHp(-damage);
+}
+else
+{
+	enemy.adjustRed(red);
+	enemy.adjustBlue(blue);
+	enemy.adjustYellow(yellow);
+	enemy.adjustGreen(green);
+	player.adjustHp(-damage);
+}
 
-		//set next players turn
-		if (playersTurn)
-		{
-			if (matchSize > 3)
-			{
-				//stays the same
-				playersTurn = true;
-			}
-			else
-			{
-				//swaps to enemies turn
-				playersTurn = false;
-			}
-		}
-		else
-		{
-			if (matchSize > 3)
-			{
-				//stays the same
-				playersTurn = false;
-			}
-			else
-			{
-				//swaps to enemies turn
-				playersTurn = false;
-			}
-		}
+//set next players turn
+if (playersTurn)
+{
+	if (matchSize > 3)
+	{
+		//stays the same
+		playersTurn = true;
+	}
+	else
+	{
+		//swaps to enemies turn
+		playersTurn = false;
+	}
+}
+else
+{
+	if (matchSize > 3)
+	{
+		//stays the same
+		playersTurn = false;
+	}
+	else
+	{
+		//swaps to enemies turn
+		playersTurn = false;
+	}
+}
 	}
 }
 
@@ -459,4 +459,34 @@ saveFile GridHandle::saveGame(std::string test)
 	temp.board = test;
 
 	return temp;
+}
+
+void GridHandle::enemyMove(std::vector<Move> moves) {
+	int i, j, temp;		
+	//Claculate wighting of each move
+	moves = enemy.weighting();
+	//insertion sort
+	for (i = 1; i < moves.size(); i++)
+	{
+		j = i;
+		while (j > 0 || moves[j - 1].weighting > moves[j].weighting)
+		{
+			temp = moves[j].weighting;
+			moves[j].weighting = moves[j - 1].weighting;
+			moves[j - 1].weighting = temp;
+			j -= 1;
+		}
+	}
+
+	temp = 0;
+	if (enemy.getDifficulty() > moves.size())
+	{
+		temp = rand() % moves.size();
+	}
+	temp = rand() % enemy.getDifficulty();
+
+
+	
+	swapPositions(moves[temp]);
+
 }

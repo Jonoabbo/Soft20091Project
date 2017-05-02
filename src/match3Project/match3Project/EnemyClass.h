@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PlayerClass.h"
+#include <vector>
 
 class enemyClass: public playerClass
 {	
@@ -14,5 +15,6 @@ public:
 	int getDifficulty();
 	enemyClass();
 	enemyClass(int newHP, int newDiff);
+	std::vector<int> getWeighting(std::vector<int>);
 	
 };

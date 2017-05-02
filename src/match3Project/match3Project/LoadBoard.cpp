@@ -9,8 +9,6 @@ using namespace std;
 loadBoard::loadBoard()
 {	
 }
-
-
 saveFile loadBoard::loadCharacter(string profileName, string charName) {
 	saveFile loadedFile;		
 	string line;

@@ -50,7 +50,7 @@ private:
 	void removeFromGrid();
 
 	//Choose the move from existing moves
-	Move enemyMove(std::vector<Move>);
+	void enemyMove(std::vector<Move>);
 
 	//sets given position to zero
 	void setPosZero(int i, int j);

@@ -78,3 +78,10 @@ enemyClass::enemyClass(int newHp = 0, int newDiff = 0) {
 	difficulty = newDiff;
 	red = 0, blue = 0, green = 0, yellow = 0;
 }
+
+std::vector<int> enemyClass::getWeighting(std::vector<int> moves) {
+	for (int i = 0; i < moves.size; 0)
+	{
+		moves[i].weigthing = weighting(moves[i].tile, moves[i].size);
+	}
+}
