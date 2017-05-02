@@ -206,7 +206,7 @@ bool GridHandle::checkSwapArea(Move moves)
 	else
 	{
 		//this is where the fun happens :/
-		std::cout << "You aren't shit at coding" << std::endl;
+		std::cout << "You ain't jack at coding" << std::endl;
 
 		for (int i = 0; i < 3; i++)
 		{
@@ -385,7 +385,7 @@ if (playersTurn)
 	std::cout << "player gained " << yellow << " yellow!" << std::endl;
 	player.adjustGreen(green);
 	std::cout << "player gained " << green << " green!" << std::endl;
-	enemy.adjustHp(-damage);
+	enemy.adjustHp(-damage);	
 }
 else
 {
@@ -419,8 +419,8 @@ else
 	}
 	else
 	{
-		//swaps to enemies turn
-		playersTurn = false;
+		//swaps to player's turn
+		playersTurn = true;
 	}
 }
 	}
@@ -432,11 +432,7 @@ void GridHandle::swapPositions(Move moves)
 	int temp = grid[moves.firstI][moves.firstJ];
 	grid[moves.firstI][moves.firstJ] = grid[moves.secondI][moves.secondJ];
 	grid[moves.secondI][moves.secondJ] = temp;
-
-	std::cout << std::endl;
-	printGrid();
-	std::cout << std::endl;
-
+	
 	//call area check
 	bool valid = checkSwapArea(moves);
 
