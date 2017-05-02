@@ -7,7 +7,15 @@ GridHandle::GridHandle()
 {
 	//do nothing
 }
-
+GridHandle::GridHandle(playerClass& newP, enemyClass& newE){
+	player = newP;
+	enemy = newE;
+}
+GridHandle::GridHandle(playerClass& newP, enemyClass& newE, std::string board) {
+	player = newP;
+	enemy = newE;
+	readFromString(board);
+}
 void GridHandle::printGrid()
 {
 	for (int i = 0; i < 8; i++)

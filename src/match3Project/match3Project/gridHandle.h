@@ -8,8 +8,8 @@ class GridHandle : public Grid
 {
 public:
 
-	playerClass p;
-	enemyClass e;
+	playerClass player;
+	enemyClass enemy;	
 	//default constructor grid handle
 	GridHandle();
 	//If not loading a save file
