@@ -7,14 +7,24 @@ GridHandle::GridHandle()
 {
 	//do nothing
 }
-GridHandle::GridHandle(playerClass& newP, enemyClass& newE){
+GridHandle::GridHandle(playerClass newP, enemyClass newE){
 	player = newP;
 	enemy = newE;
 }
-GridHandle::GridHandle(playerClass& newP, enemyClass& newE, std::string board) {
+GridHandle::GridHandle(playerClass newP, enemyClass newE, std::string board) {
 	player = newP;
 	enemy = newE;
 	readFromString(board);
+}
+
+playerClass GridHandle::getPlayer()
+{
+	return player;
+}
+
+enemyClass GridHandle::getEnemy()
+{
+	return enemy;
 }
 
 void GridHandle::printGrid()
@@ -38,13 +48,13 @@ void GridHandle::dropDown()
 	//move 0 to the top of the column
 	//replace 0 with new numbers
 
-	grid[3][5] = 0;
-	grid[3][6] = 0;
-	grid[3][7] = 0;
+	//grid[3][5] = 0;
+	//grid[3][6] = 0;
+	//grid[3][7] = 0;
 
-	grid[3][3] = 0;
-	grid[4][3] = 0;
-	grid[5][3] = 0;
+	//grid[3][3] = 0;
+	//grid[4][3] = 0;
+	//grid[5][3] = 0;
 	
 	std::vector<int> columnIndexes;
 	int columnIndex = 120;
@@ -141,32 +151,42 @@ void GridHandle::readFromString(std::string r){
 	std::cout << std::endl;
 }
 
-bool GridHandle::checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j)
+bool GridHandle::checkSwapArea(Move moves)
 {
 	std::vector<int> checkedLines[3];
 
-	if (pos1i == pos2i)
+	int matchSize;
+
+	int red= 0;
+	int blue = 0;
+	int yellow = 0;
+	int green = 0;
+	int damage = 0;
+
+	if (moves.firstI == moves.secondI)
 	{
 		//horizontal swap
 		std::cout << "Attempting Horizontal Swap" << std::endl;
-		checkedLines[0] = findMatchHorizontal(pos1i);
+		checkedLines[0] = findMatchHorizontal(moves.firstI);
 		std::cout << checkedLines[0].empty();
 
-		checkedLines[1] = findMatchVertical(pos1j);
+		checkedLines[1] = findMatchVertical(moves.firstJ);
 		std::cout << checkedLines[1].empty();
 
-		checkedLines[2] = findMatchVertical(pos2j);
+		checkedLines[2] = findMatchVertical(moves.secondJ);
 		std::cout << checkedLines[2].empty();
 	}
 	else
 	{
 		//vertical swap
 		std::cout << "Attempting Vertical Swap" << std::endl;
-		checkedLines[0] = findMatchVertical(pos1j);
+		checkedLines[0] = findMatchVertical(moves.firstJ);
 		std::cout << checkedLines[0].empty();
-		checkedLines[1] = findMatchHorizontal(pos1i);
+		
+		checkedLines[1] = findMatchHorizontal(moves.firstI);
 		std::cout << checkedLines[1].empty();
-		checkedLines[2] = findMatchHorizontal(pos2i);
+
+		checkedLines[2] = findMatchHorizontal(moves.secondI);
 		std::cout << checkedLines[2].empty();
 	}
 
@@ -191,29 +211,139 @@ bool GridHandle::checkSwapArea(int pos1i, int pos1j, int pos2i, int pos2j)
 
 				for (int j = 0; j < checkedLines[i].size(); j += 2)
 				{
-					std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " is: " << grid[checkedLines[i][j]][checkedLines[i][j + 1]] << std::endl;
+					moves.tile = grid[checkedLines[i][j]][checkedLines[i][j + 1]];
+					std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " is: " << moves.tile << std::endl;
+
+					switch (moves.tile)
+					{
+					case 1:
+						red++;
+						break;
+					case 2:
+						blue++;
+						break;
+					case 3:
+						yellow++; 
+						break;
+					case 4:
+						green++;
+						break;
+					case 5:
+						damage++;
+						break;
+					}
+
+					grid[checkedLines[i][j]][checkedLines[i][j + 1]] = 0;
+					std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " has been changed to: " << grid[checkedLines[i][j]][checkedLines[i][j + 1]] << std::endl;
 					if (checkedLines[i][j] == 9) break;
 				}
 
+				matchSize = checkedLines[i].size();
+				std::cout << "the size of the match is: " << moves.size << std::endl;
+
 			}
 		}
+
+		//call drop down to replace zeros
+		dropDown();
+
+		//stores the positions of all matches
+		std::vector<int> matchPositions;
+
+		std::vector<int> verticalMatches;
+		std::vector<int> horizontalMatches;
+
+		//for each row
+		for (int i = 0; i < 8; i++)
+		{
+			//for each match in the vector returned by the function
+			horizontalMatches = findMatchHorizontal(i);
+			for (int i = 0; i < horizontalMatches.size(); i++)
+			{
+				matchPositions.push_back(horizontalMatches[i]);
+			}
+		}
+
+		horizontalMatches.clear();
+
+		//for each column
+		for (int i = 0; i < 8; i++)
+		{
+			//for each match in the vector returned by the function
+			verticalMatches = findMatchVertical(i);
+			for (int i = 0; i < verticalMatches.size(); i++)
+			{
+				matchPositions.push_back(verticalMatches[i]);
+			}
+		}
+
+		verticalMatches.clear();
+
+		//loop through all positions stored in matchPositions
+		//increment 'rewards' counters
+		//remove coords from vector
+		while (!matchPositions.empty())
+		{
+			for (int i = 0; i < matchPositions.size(); i+= 2)
+			{
+				if (matchPositions[i] == 9)
+				{
+					//ignore these ones
+				}
+				else
+				{
+					//increment 'reward'
+					int tile = grid[matchPositions[i]][matchPositions[i + 1]];
+
+					switch (tile)
+					{
+					case 1:
+						red++;
+						break;
+					case 2:
+						blue++;
+						break;
+					case 3:
+						yellow++;
+						break;
+					case 4:
+						green++;
+						break;
+					case 5:
+						damage++;
+						break;
+					}
+
+					//set to zero
+					grid[matchPositions[i]][matchPositions[i + 1]] = 0;
+
+					//remove coords from vector
+
+				}
+			}
+
+			//float zeros to the top and replace
+			dropDown();
+
+		}
+
 	}
 
 }
 
-void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j)
+void GridHandle::swapPositions(Move moves)
 {
 	//perform swap
-	int temp = grid[pos1i][pos1j];
-	grid[pos1i][pos1j] = grid[pos2i][pos2j];
-	grid[pos2i][pos2j] = temp;
+	int temp = grid[moves.firstI][moves.firstJ];
+	grid[moves.firstI][moves.firstJ] = grid[moves.secondI][moves.secondJ];
+	grid[moves.secondI][moves.secondJ] = temp;
 
 	std::cout << std::endl;
 	printGrid();
 	std::cout << std::endl;
 
 	//call area check
-	bool valid = checkSwapArea(pos1i, pos1j, pos2i, pos2j);
+	bool valid = checkSwapArea(moves);
 
 	if (valid)
 	{
@@ -222,35 +352,23 @@ void GridHandle::swapPositions(int pos1i, int pos1j, int pos2i, int pos2j)
 	else
 	{
 		std::cout << "Not a valid swap!" << std::endl;
+
+		int temp = grid[moves.firstI][moves.firstJ];
+		grid[moves.firstI][moves.firstJ] = grid[moves.secondI][moves.secondJ];
+		grid[moves.secondI][moves.secondJ] = temp;
+
+		std::cout << std::endl;
+		printGrid();
+		std::cout << std::endl;
 	}
 }
-
-void GridHandle::incrementResource(int resource)
-{
-	//switch (resource)
-	//{
-	//case 1:
-	//	//red
-	//	
-	//case 2:
-	//	//blue
-	//case 3:
-	//	//yellow
-	//case 4:
-	//	//green
-	//case 5:
-	//	//damage
-	//}
-}
-
-
 
 saveFile GridHandle::saveGame(std::string test)
 {
 	saveFile temp;
 
-	temp.player = p;
-	temp.enemy = e;
+	temp.player = player;
+	temp.enemy = enemy;
 	temp.board = test;
 
 	return temp;

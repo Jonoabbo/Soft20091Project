@@ -26,26 +26,27 @@ int _tmain(int argc, _TCHAR* argv[])
 	playerClass player;
 	enemyClass enemy;
 
+	player.setCharacterName("Jim");
+
 	//testing
 	player.adjustRed(12);
 	player.adjustBlue(12);
 	player.adjustYellow(12);
 	player.adjustGreen(12);
 
+	saveFile newSave;
+
+	newSave.player = player;
+	newSave.enemy = enemy;
+	newSave.board = hello;
+
+	saveBoard Board;
+
+	Board.addProfile(player.getProfileName());
+	Board.addCharacter(player.getProfileName(), player.getCharacterName());
+	Board.save
 
 	HandleTest.readFromString(hello);
-
-	saveBoard newSave(HandleTest.saveGame(hello));
-
-	playerClass player1;
-	enemyClass enemy1;
-
-	GridHandle savingTest;
-
-	savingTest.readFromString(hello);
-
-	player1.setProfileName("Liam");
-	player1.setProfileName("hates life...");
 
 	//saveBoard newSave2(HandleTest.saveGame(hello));
 
@@ -65,7 +66,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cin >> c;
 	std::cin >> d;
 
-	HandleTest.swapPositions(a, b, c, d);
+	
 
 
 
