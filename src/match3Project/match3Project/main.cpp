@@ -76,8 +76,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cin >> c;
 	std::cin >> d;
 
-	
+	Move playerMove;
 
+	playerMove.firstI = a;
+	playerMove.firstJ = b;
+	playerMove.secondI = c;
+	playerMove.secondJ = d;
+
+	HandleTest.swapPositions(playerMove);
 
 
 	return 0;

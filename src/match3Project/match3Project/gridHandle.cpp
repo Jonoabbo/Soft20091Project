@@ -211,35 +211,42 @@ bool GridHandle::checkSwapArea(Move moves)
 
 				for (int j = 0; j < checkedLines[i].size(); j += 2)
 				{
-					moves.tile = grid[checkedLines[i][j]][checkedLines[i][j + 1]];
-					std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " is: " << moves.tile << std::endl;
-
-					switch (moves.tile)
+					if (checkedLines[i][j] == 9)
 					{
-					case 1:
-						red++;
-						break;
-					case 2:
-						blue++;
-						break;
-					case 3:
-						yellow++; 
-						break;
-					case 4:
-						green++;
-						break;
-					case 5:
-						damage++;
-						break;
+						//ignore this
 					}
+					else
+					{
+						std::cout << std::endl;
+						moves.tile = grid[checkedLines[i][j]][checkedLines[i][j + 1]];
+						std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " is: " << moves.tile << std::endl;
 
-					grid[checkedLines[i][j]][checkedLines[i][j + 1]] = 0;
-					std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " has been changed to: " << grid[checkedLines[i][j]][checkedLines[i][j + 1]] << std::endl;
-					if (checkedLines[i][j] == 9) break;
+						switch (moves.tile)
+						{
+						case 1:
+							red++;
+							break;
+						case 2:
+							blue++;
+							break;
+						case 3:
+							yellow++;
+							break;
+						case 4:
+							green++;
+							break;
+						case 5:
+							damage++;
+							break;
+						}
+
+						grid[checkedLines[i][j]][checkedLines[i][j + 1]] = 0;
+						std::cout << "the value at point: " << checkedLines[i][j] << ", " << checkedLines[i][j + 1] << " has been changed to: " << grid[checkedLines[i][j]][checkedLines[i][j + 1]] << std::endl;
+					}
 				}
 
-				matchSize = checkedLines[i].size();
-				std::cout << "the size of the match is: " << moves.size << std::endl;
+				matchSize = (checkedLines[i].size()-2)/2;
+				std::cout << "the size of the match is: " << matchSize << std::endl;
 
 			}
 		}
@@ -363,9 +370,13 @@ bool GridHandle::checkSwapArea(Move moves)
 		if (playersTurn)
 		{
 			player.adjustRed(red);
+			std::cout << "player gained " << red << " red!" << std::endl;
 			player.adjustBlue(blue);
+			std::cout << "player gained " << blue << " blue!" << std::endl;
 			player.adjustYellow(yellow);
+			std::cout << "player gained " << yellow << " yellow!" << std::endl;
 			player.adjustGreen(green);
+			std::cout << "player gained " << green << " green!" << std::endl;
 			enemy.adjustHp(-damage);
 		}
 		else
