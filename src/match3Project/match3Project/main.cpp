@@ -124,8 +124,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	Move playerMove;
 	saveBoard saving;
 	int playerInput;
-	
-	while (handler.getPlayerHp() > 0 || handler.getEnemyHp > 0)
+
+	while (handler.getPlayerHp() > 0 || handler.getEnemyHp() > 0)
 	{
 		handler.printGrid();
 		if (handler.playersTurn == true)
@@ -154,10 +154,10 @@ int _tmain(int argc, _TCHAR* argv[])
 				cin >> playerInput;
 				break;
 			case 3:
-				cout << "PlayerHp: " << handler.getPlayerHp << endl;
+				cout << "PlayerHp: " << handler.getPlayerHp() << endl;
 				cin >> playerInput;
 			case 4:
-				cout << "EnemyHp: " << handler.getPlayerHp << endl;
+				cout << "EnemyHp: " << handler.getPlayerHp() << endl;
 				cin >> playerInput;
 
 			}
@@ -171,77 +171,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 
 	//everthing below this is from before and not actually needed
-
-	GridInit test;
-
-	std::string hello = test.writeToString();
-
-	std::cout << hello << std::endl;
-
-	GridHandle HandleTest;
-	playerClass player;
-	enemyClass enemy;
-
-	player.setCharacterName("HARDFUCKER");
-	player.setProfileName("KEV");
-
-	//testing
-	player.adjustRed(12);
-	player.adjustBlue(12);
-	player.adjustYellow(12);
-	player.adjustGreen(12);
-
-	enemy.adjustDifficulty(1);
-
-	saveFile newSave;
-	saveFile saveLoadTest;
-
-	newSave.player = player;
-	newSave.enemy = enemy;
-	newSave.board = hello;
-
-	saveBoard Board;
-
-	Board.addProfile(player.getProfileName());
-	Board.addCharacter(player.getProfileName(), player.getCharacterName());
-	Board.save(newSave);
-
-	HandleTest.readFromString(hello);
-
-	//saveBoard newSave2(HandleTest.saveGame(hello));
-
-	loadBoard loadSave;
-
-	saveLoadTest = loadSave.getHardest(player.getProfileName());
-
-	//saveLoadTest = loadSave.loadCharacter(player.getProfileName(), player.getCharacterName());
-
-	std::cout << saveLoadTest.board << std::endl;
-	
-	//saveFile testSaveFile;
-
-	//testSaveFile = loadSave.loadCharacter("Default Profile", "Default Character");
-
-	//std::string newString = testSaveFile.board;
-	//std::cout << "Board is: ";
-	//std::cout << newString << std::endl;
-
-	int a, b, c, d;
-	std::cin >> a;
-	std::cin >> b;
-	std::cin >> c;
-	std::cin >> d;
-
-	Move playerMove;
-
-	playerMove.firstI = a;
-	playerMove.firstJ = b;
-	playerMove.secondI = c;
-	playerMove.secondJ = d;
-
-	HandleTest.swapPositions(playerMove);
-
-
 	return 0;
 }
 

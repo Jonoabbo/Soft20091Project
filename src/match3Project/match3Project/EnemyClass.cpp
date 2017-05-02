@@ -82,7 +82,7 @@ enemyClass::enemyClass(int newHp = 0) {
 	enemyFavourite();
 }
 void enemyClass::enemyFavourite() {
-	temp = rand() % 4;
+	int temp = rand() % 4;
 	switch (temp) 
 	{	
 		case 0:
@@ -100,8 +100,9 @@ void enemyClass::enemyFavourite() {
 	}
 }
 std::vector<Move> enemyClass::getWeighting(std::vector<Move> moves) {
-	for (int i = 0; i < moves.size; 0)
+	for (int i = 0; i < moves.size(); 0)
 	{
-		moves[i].weigthing = weighting(moves[i].tile, moves[i].size);
+		moves[i].weighting = weighting(moves[i].tile, moves[i].size);
 	}
+	return moves;
 }
