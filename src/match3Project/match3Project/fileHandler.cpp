@@ -81,7 +81,7 @@ void fileHandler::addProfile(string profileName) {
 		fstream saveFile;
 		string line;
 
-		saveFile.open("gamesSaves.xml", ios::in);
+		saveFile.open("gameSaves.xml", ios::in);
 		if (saveFile.is_open())
 		{			
 			while (getline(saveFile, line))
@@ -99,7 +99,7 @@ void fileHandler::addProfile(string profileName) {
 		else
 		{
 			saveFile.close();
-			saveFile.open("gamesSaves.xml", ios::out);
+			saveFile.open("gameSaves.xml", ios::out);
 			if (saveFile.is_open())
 			{
 				//if the file is empty do this
@@ -113,7 +113,7 @@ void fileHandler::addProfile(string profileName) {
 
 		saveFile.close();
 
-		saveFile.open("gamesSaves.xml", ios::out);
+		saveFile.open("gameSaves.xml", ios::out);
 		if (saveFile.is_open())
 		{
 			for (int n = 0; n < writeVector.size(); n++)
@@ -151,7 +151,7 @@ void fileHandler::addCharacter(string profileName, string characterName) {
 		fstream saveFile;
 		string line;
 
-		saveFile.open("gamesSaves.xml", ios::in);
+		saveFile.open("gameSaves.xml", ios::in);
 		if (saveFile.is_open())
 		{
 			while (getline(saveFile, line))
@@ -181,7 +181,7 @@ void fileHandler::addCharacter(string profileName, string characterName) {
 		}
 		saveFile.close();
 
-		saveFile.open("gamesSaves.xml", ios::out);
+		saveFile.open("gameSaves.xml", ios::out);
 		if (saveFile.is_open())
 		{
 			for (int n = 0; n < writeVector.size(); n++)
