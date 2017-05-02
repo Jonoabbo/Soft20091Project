@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "grid.h"
 
+using namespace std;
 Grid::Grid()
 {
 	//hello world!
 }
 
-std::string Grid::writeToString()
+string Grid::writeToString()
 {
 	std::string gridString;
 
@@ -26,7 +27,7 @@ std::string Grid::writeToString()
 
 }
 
-std::vector<int> Grid::findMatchHorizontal(int row)
+vector<int> Grid::findMatchHorizontal(int row)
 {
 	int aCounter = 0;
 	std::vector<int> matchPositions; //stores 2 ints for each position index form: {i,j} with 0 to separate the 'matches'
@@ -81,7 +82,7 @@ std::vector<int> Grid::findMatchHorizontal(int row)
 
 }
 
-std::vector<int> Grid::findMatchVertical(int column)
+vector<int> Grid::findMatchVertical(int column)
 {
 	int dCounter = 0;
 	std::vector<int> matchPositions; //stores 2 ints for each position index form: {i,j} with 0 to separate the 'matches'
@@ -135,12 +136,19 @@ std::vector<int> Grid::findMatchVertical(int column)
 
 }
 
-std::vector<Move> Grid::getMoves(){
-	std::vector<Move> moves;
+vector<Move> Grid::getMoves(){
+	vector<Move> moves;
+	moves = getHorizontalMoves(moves);
+	moves = getVerticalMoves(moves);
+
+	return moves;
+}
+
+vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 	Move temp;
 	int tile, tempGrid[10][10] = { 0 };
 	//reading grid into slightly larger grid with a buffer of -1's around it to allow for easy comparison
-	for (int i = 1; i < 10;i++)
+	for (int i = 1; i < 10; i++)
 	{
 		for (int j = 1; j < 10; j++)
 		{
@@ -161,30 +169,31 @@ std::vector<Move> Grid::getMoves(){
 			//for every co-ordinate in the grid
 			if (tile == tempGrid[i + 1][j] || tempGrid[i][j] == tempGrid[i + 2][j])
 			{
-				if (tile == tempGrid[i+2][j])
+				if (tile == tempGrid[i + 2][j])
 				{
-					if (tile == tempGrid[i+1][j - 1])
+					if (tile == tempGrid[i + 1][j - 1])
 					{
 						temp.firstX = i;
 						temp.firstY = j;
 						temp.secondX = i + 1;
-						temp.secondY = j-1;
+						temp.secondY = j - 1;
 						temp.tile = tile;
-						
-						if(tile == tempGrid[i+3][j])
+
+						if (tile == tempGrid[i + 3][j])
 						{
-								temp.size = 4;
+							temp.size = 4;
 
 						}
-						else if(tile == tempGrid[i-1][j])
+						else if (tile == tempGrid[i - 1][j])
 						{
 							temp.size = 4;
 						}
-						else 
+						else
 						{
 							temp.size = 3;
 						}
-					} else if (tile == tempGrid[i + 1][j + 1])
+					}
+					else if (tile == tempGrid[i + 1][j + 1])
 					{
 						temp.firstX = i;
 						temp.firstY = j;
@@ -194,9 +203,9 @@ std::vector<Move> Grid::getMoves(){
 
 						if (tile == tempGrid[i + 3][j])
 						{
-							temp.size = 4;							
+							temp.size = 4;
 						}
-						else if(tile == tempGrid[i - 1][j])
+						else if (tile == tempGrid[i - 1][j])
 						{
 							temp.size = 4;
 						}
@@ -207,14 +216,14 @@ std::vector<Move> Grid::getMoves(){
 					}///
 					else
 					{
-						if (tile ==tempGrid[i+2][j-1])//x10/x20/x03
+						if (tile == tempGrid[i + 2][j - 1])//x10/x20/x03
 						{
 							temp.firstX = i;
 							temp.firstY = j;
 							temp.secondX = i + 2;
 							temp.secondY = j - 1;
 							temp.tile = tile;
-							if (tile == tempGrid[i+3][j])
+							if (tile == tempGrid[i + 3][j])
 							{
 								if (tile == tempGrid[i + 4][j])
 								{
@@ -253,11 +262,136 @@ std::vector<Move> Grid::getMoves(){
 								temp.size = 3;
 							}
 						}
-					}					
+					}
 				}
 			}
 			moves.push_back(temp);
 		}
 	}
-	return moves;
+}
+
+vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
+	Move temp;
+	int tile, tempGrid[10][10] = { 0 };
+	//reading grid into slightly larger grid with a buffer of -1's around it to allow for easy comparison
+	for (int i = 1; i < 10; i++)
+	{
+		for (int j = 1; j < 10; j++)
+		{
+			tempGrid[i][j] == grid[i - 1][j - 1];
+		}
+	}
+	for (int i = 1; i < 8; i++)
+	{
+		for (int j = 1; j < 8; j++)
+		{
+			temp.firstX = 0;
+			temp.firstY = 0;
+			temp.secondX = 0;
+			temp.secondY = 0;
+			temp.tile = 0;
+			temp.size = 0;
+			tile = tempGrid[i][j];
+			//for every co-ordinate in the grid
+			if (tile == tempGrid[i][j + 1] || tempGrid[i][j] == tempGrid[i][j + 2])
+			{
+				if (tile == tempGrid[i ][j+ 2])
+				{
+					if (tile == tempGrid[i - 1][j + 1])
+					{
+						temp.firstX = i;
+						temp.firstY = j;
+						temp.secondX = i - 1;
+						temp.secondY = j + 1;
+						temp.tile = tile;
+
+						if (tile == tempGrid[i][j + 3])
+						{
+							temp.size = 4;
+
+						}
+						else if (tile == tempGrid[i][j - 1])
+						{
+							temp.size = 4;
+						}
+						else
+						{
+							temp.size = 3;
+						}
+					}
+					else if (tile == tempGrid[i + 1][j + 1])
+					{
+						temp.firstX = i;
+						temp.firstY = j;
+						temp.secondX = i + 1;
+						temp.secondY = j + 1;
+						temp.tile = tile;
+
+						if (tile == tempGrid[i][ j+ 3])
+						{
+							temp.size = 4;
+						}
+						else if (tile == tempGrid[i][ j- 1])
+						{
+							temp.size = 4;
+						}
+						else
+						{
+							temp.size = 3;
+						}
+					}///
+					else
+					{
+						if (tile == tempGrid[i - 1][j + 2])//x10/x20/x03
+						{
+							temp.firstX = i;
+							temp.firstY = j;
+							temp.secondX = i - 1;
+							temp.secondY = j + 2;
+							temp.tile = tile;
+							if (tile == tempGrid[i][j + 3])
+							{
+								if (tile == tempGrid[i][j + 4])
+								{
+									temp.size = 5;
+								}
+								else
+								{
+									temp.size = 4;
+								}
+							}
+							else
+							{
+								temp.size = 3;
+							}
+						}
+						else if (tile == tempGrid[i + 1][j + 2])
+						{
+							temp.firstX = i;
+							temp.firstY = j;
+							temp.secondX = i - 1;
+							temp.secondY = j + 2;
+							temp.tile = tile;
+							if (tile == tempGrid[i][j + 3])
+							{
+								if (tile == tempGrid[i][j + 4])
+								{
+									temp.size = 5;
+								}
+								else
+								{
+									temp.size = 4;
+								}
+							}
+							else
+							{
+								temp.size = 3;
+							}
+						}
+					}
+				}
+			}
+			moves.push_back(temp);
+		}
+	}
 }

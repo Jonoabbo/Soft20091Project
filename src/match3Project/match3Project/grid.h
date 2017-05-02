@@ -15,9 +15,15 @@ public:
 	std::vector<int> findMatchVertical(int column);
 
 	std::vector<Move> getMoves();
+	
+	
 	//writeGridToString + return
 	std::string writeToString();
 
 protected:
 	int grid[8][8];
+	std::vector<Move> getHorizontalMoves(std::vector<Move>);
+	std::vector<Move> getVerticalMoves(std::vector<Move>);
+	
+
 };
