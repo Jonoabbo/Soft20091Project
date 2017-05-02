@@ -2,8 +2,9 @@
 #include "Move.h";
 #include <iostream>
 #include <vector>
-#include <time.h>
 #include <string>
+#include <time.h>
+
 
 class Grid{
 public:

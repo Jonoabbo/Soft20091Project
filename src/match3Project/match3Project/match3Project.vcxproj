@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EnemyClass.h" />
+    <ClInclude Include="fileHandler.h" />
     <ClInclude Include="grid.h" />
     <ClInclude Include="gridHandle.h" />
     <ClInclude Include="gridInit.h" />
@@ -93,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnemyClass.cpp" />
+    <ClCompile Include="fileHandler.cpp" />
     <ClCompile Include="grid.cpp" />
     <ClCompile Include="gridHandle.cpp" />
     <ClCompile Include="gridInit.cpp" />
