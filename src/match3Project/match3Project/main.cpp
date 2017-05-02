@@ -26,7 +26,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	playerClass player;
 	enemyClass enemy;
 
-	player.setCharacterName("FUCKER");
+	player.setCharacterName("HARDFUCKER");
 	player.setProfileName("KEV");
 
 	//testing
@@ -34,6 +34,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	player.adjustBlue(12);
 	player.adjustYellow(12);
 	player.adjustGreen(12);
+
+	enemy.adjustDifficulty(1);
 
 	saveFile newSave;
 	saveFile saveLoadTest;
@@ -54,9 +56,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	loadBoard loadSave;
 
-	saveLoadTest = loadSave.loadCharacter(player.getProfileName(), player.getCharacterName());
+	saveLoadTest = loadSave.getHardest(player.getProfileName());
 
-	std::cout << saveLoadTest.player.getCharacterName() << std::endl;
+	//saveLoadTest = loadSave.loadCharacter(player.getProfileName(), player.getCharacterName());
+
+	std::cout << saveLoadTest.board << std::endl;
 	
 	//saveFile testSaveFile;
 
