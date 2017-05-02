@@ -44,7 +44,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Board.addProfile(player.getProfileName());
 	Board.addCharacter(player.getProfileName(), player.getCharacterName());
-	Board.save
+	//Board.save(newSave);
 
 	HandleTest.readFromString(hello);
 

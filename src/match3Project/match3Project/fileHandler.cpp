@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "fileHandler.h"
 #include <iostream>
 #include <fstream>
@@ -66,9 +67,9 @@ void fileHandler::addProfile(string profileName) {
 	vector<string> writeVector;
 	
 	//Checks if profile already exisits
-	if (exsitingProfiles.size != 0)
+	if (exsitingProfiles.size() != 0)
 	{
-		for (int i = 0; i < exsitingProfiles.size; i++)
+		for (int i = 0; i < exsitingProfiles.size(); i++)
 		{
 			if (exsitingProfiles[i] == profileName)
 			{
@@ -86,6 +87,7 @@ void fileHandler::addProfile(string profileName) {
 		if (saveFile.is_open())
 		{			
 			getline(saveFile, line);
+			
 			writeVector.push_back(line);
 			if (line == "<root>")
 			{
@@ -96,15 +98,20 @@ void fileHandler::addProfile(string profileName) {
 		}
 		else
 		{
-			//if the file is empty do this
-			writeVector.push_back("<root>");
-			writeVector.push_back("<profile>");
-			writeVector.push_back(profileName);
-			writeVector.push_back("</profile>");
-			writeVector.push_back("</root>");
+			saveFile.close();
+			saveFile.open("gamesSaves.xml", ios::out);
+			if (saveFile.is_open())
+			{
+				//if the file is empty do this
+				writeVector.push_back("<root>");
+				writeVector.push_back("<profile>");
+				writeVector.push_back(profileName);
+				writeVector.push_back("</profile>");
+				writeVector.push_back("</root>");
+			}
 		}
 
-		saveFile.close;
+		saveFile.close();
 
 		saveFile.open("gamesSaves.xml", ios::out);
 		if (saveFile.is_open())
@@ -128,9 +135,9 @@ void fileHandler::addCharacter(string profileName, string characterName) {
 	vector<string> writeVector;
 
 	//Checks if character already exisits
-	if (exsitingCharacters.size != 0)
+	if (exsitingCharacters.size() != 0)
 	{
-		for (int i = 0; i < exsitingCharacters.size; i++)
+		for (int i = 0; i < exsitingCharacters.size(); i++)
 		{
 			if (exsitingCharacters[i] == characterName)
 			{
@@ -161,7 +168,7 @@ void fileHandler::addCharacter(string profileName, string characterName) {
 				}
 			}
 		}
-		saveFile.close;
+		saveFile.close();
 
 		saveFile.open("gamesSaves.xml", ios::out);
 		if (saveFile.is_open())

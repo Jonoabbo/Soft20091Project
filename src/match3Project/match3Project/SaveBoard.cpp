@@ -10,7 +10,7 @@ saveBoard::saveBoard() {
 
 }
 
-saveBoard::save(saveFile saveF)
+void saveBoard::save(saveFile saveF)
 {
 	
 	vector<string> saveData;
@@ -33,12 +33,7 @@ saveBoard::save(saveFile saveF)
 	saveData.push_back("<board>");
 	saveData.push_back(saveF.board);
 	saveData.push_back("</board>");
-<<<<<<< HEAD
 	saveVector(saveData,saveF.player.getProfileName(), saveF.player.getCharacterName());
-=======
-	save(saveData,saveF.player.getProfileName(), saveF.player.getCharacterName());
->>>>>>> origin/master
-
 }
 
 void saveBoard::saveVector(vector<string> saveData, string profileName, string characterName)
