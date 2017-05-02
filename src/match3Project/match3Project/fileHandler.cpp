@@ -154,19 +154,21 @@ void fileHandler::addCharacter(string profileName, string characterName) {
 		saveFile.open("gamesSaves.xml", ios::in);
 		if (saveFile.is_open())
 		{
-			getline(saveFile, line);
-			writeVector.push_back(line);
-			if (line == "<profile>")
-			{
-				getline(saveFile, line);
+			while (getline(saveFile, line))
+			{				
 				writeVector.push_back(line);
-				if (line == profileName)
+				if (line == "<profile>")
 				{
-					writeVector.push_back("<character>");
-					writeVector.push_back(characterName);
-					writeVector.push_back("</character>");
+					getline(saveFile, line);
+					writeVector.push_back(line);
+					if (line == profileName)
+					{
+						writeVector.push_back("<character>");
+						writeVector.push_back(characterName);
+						writeVector.push_back("</character>");
+					}
 				}
-			}
+			}			
 		}
 		saveFile.close();
 
