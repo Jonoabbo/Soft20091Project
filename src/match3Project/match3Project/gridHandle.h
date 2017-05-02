@@ -15,11 +15,9 @@ public:
 	bool playersTurn = true;
 	//default constructor grid handle
 	GridHandle();
-	//If not loading a save file
-	GridHandle(playerClass p, enemyClass e);
-	//if loading a save file
+
 	GridHandle(playerClass p, enemyClass e, std::string board);
-	//test -- print grid
+	//print grid
 	void printGrid();
 
 	//createGridFromString
@@ -30,6 +28,12 @@ public:
 
 	//save the game
 	saveFile saveGame(std::string test);
+
+	//get player hp
+	int getPlayerHp();
+
+	//get enemy hp
+	int getEnemyHp();
 
 	//get player
 	playerClass getPlayer();

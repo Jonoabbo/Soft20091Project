@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <iostream>
 
-
+using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//##########################################################
@@ -26,6 +26,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	vector<std::string> characterChoices;
 	loadBoard files;
 	saveFile currentSave;
+	GridInit genGame;
+	
 
 	int profileChoice;
 	int charChoice;
@@ -47,11 +49,23 @@ int _tmain(int argc, _TCHAR* argv[])
 	playerClass newPlayer;
 	enemyClass newEnemy;
 
-	std::cout << "Choice: ";
-	std::cin >> profileChoice;
+	cout << "Choice: ";
+	cin >> profileChoice;
 
 	if (profileChoice == 0)
 	{
+		cout << "What would you like to call the new Profile?";
+		cin >> profileChoiceString;
+		files.addProfile(profileChoiceString);
+		newPlayer.setProfileName(profileChoiceString);
+
+		cout << "What would you like to call your first character?";
+		cin >> charChoiceString;
+		files.addCharacter(profileChoiceString, charChoiceString);
+		newPlayer.setCharacterName(charChoiceString);
+
+		boardString = genGame.writeToString();
+		
 		//create new profile
 		system("CLS"); //clear screen 
 	}
@@ -77,6 +91,13 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (charChoice == 0)
 		{
 			//new character
+			cout << "What would you like to call the new character?";
+			cin >> charChoiceString;
+			files.addCharacter(profileChoiceString, charChoiceString);
+			newPlayer.setCharacterName(charChoiceString);
+
+			boardString = genGame.writeToString();
+			
 		}
 		else if (charChoice == 1)
 		{
@@ -99,7 +120,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	//##########################################################
 	// G A M E  L O O P
 	//##########################################################
-
+	GridHandle handler(newPlayer, newEnemy, boardString);
+	Move playerMove;
+	while (handler.getPlayerHp() > 0 || handler.getEnemyHp > 0)
+	{
+		cout << "Select the X co-ordinate of the second tile";
+		cin >> playerMove.firstI;
+		cout << "Select the Y co-ordinate of the second tile";
+		cin >> playerMove.firstJ;
+		cout << "Select the X co-ordinate of the second tile";
+		cin >> playerMove.secondI;
+		cout << "Select the Y co-ordinate of the second tile";
+		cin >> playerMove.secondJ;
+	}
+	handler.printGrid();
 
 	//everthing below this is from before and not actually needed
 

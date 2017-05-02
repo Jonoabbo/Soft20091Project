@@ -9,43 +9,43 @@ int enemyClass::weighting(int tile, int size)
 		case 1:
 			if (size == 4) 
 			{
-				return red*size;
+				return redWeight*size;
 			}
 			else if (size == 5)
 			{
-				return red * 2 * size;
+				return redWeight * 2 * size;
 			}
-			return red*(size - 1);
+			return redWeight*(size - 1);
 		case 2:
 			if (size == 4)
 			{
-				return blue*size;
+				return blueWeight*size;
 			}
 			else if (size == 5)
 			{
-				return blue * 2 * size;
+				return blueWeight * 2 * size;
 			}
-			return blue*(size - 1);
+			return blueWeight*(size - 1);
 		case 3:
 			if (size == 4)
 			{
-				return yellow*size;
+				return YellowWeight*size;
 			}
 			else if (size == 5)
 			{
-				return yellow * 2 * size;
+				return YellowWeight * 2 * size;
 			}
-			return yellow*(size - 1);
+			return YellowWeight*(size - 1);
 		case 4:
 			if (size == 4)
 			{
-				return green*size;
+				return greenWeight*size;
 			}
 			else if (size == 5)
 			{
-				return green * 2 * size;
+				return greenWeight * 2 * size;
 			}
-			return green*(size - 1);
+			return greenWeight*(size - 1);
 		case 5:
 			if (size == 4)
 			{
@@ -72,13 +72,33 @@ enemyClass::enemyClass(){
 	hp = 50;
 	difficulty = 5;
 	red = 0, blue = 0, green = 0, yellow = 0;
+	redWeight = 1, blueWeight = 1, YellowWeight = 1, greenWeight = 1;
+	enemyFavourite();
 }		
-enemyClass::enemyClass(int newHp = 0, int newDiff = 0) {
+enemyClass::enemyClass(int newHp = 0) {
 	hp = newHp;
-	difficulty = newDiff;
 	red = 0, blue = 0, green = 0, yellow = 0;
+	redWeight = 1, blueWeight = 1, YellowWeight = 1, greenWeight = 1;
+	enemyFavourite();
 }
-
+void enemyClass::enemyFavourite() {
+	temp = rand() % 4;
+	switch (temp) 
+	{	
+		case 0:
+			redWeight = 2;
+			break;
+		case 1:
+			blueWeight = 2;
+			break;
+		case 2: 
+			YellowWeight = 2;
+			break;
+		case 3:
+			greenWeight = 2;
+			break;
+	}
+}
 std::vector<int> enemyClass::getWeighting(std::vector<int> moves) {
 	for (int i = 0; i < moves.size; 0)
 	{

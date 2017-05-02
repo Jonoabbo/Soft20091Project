@@ -2,11 +2,13 @@
 
 #include "PlayerClass.h"
 #include <vector>
+#include <time.h>
 
 class enemyClass: public playerClass
 {	
 private:
-	int difficulty;
+	int difficulty, redWeight,blueWeight,YellowWeight,greenWeight;
+	
 	
 public:
 	
@@ -14,7 +16,8 @@ public:
 	void adjustDifficulty(int);
 	int getDifficulty();
 	enemyClass();
-	enemyClass(int newHP, int newDiff);
+	enemyClass(int newHP);
+	void enemyFavourite();
 	std::vector<int> getWeighting(std::vector<int>);
 	
 };
