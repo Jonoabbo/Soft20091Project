@@ -15,9 +15,9 @@ public:
 	//default constructor grid handle
 	GridHandle();
 	//If not loading a save file
-	GridHandle(playerClass& p, enemyClass& e);
+	GridHandle(playerClass p, enemyClass e);
 	//if loading a save file
-	GridHandle(playerClass& p, enemyClass& e, std::string board);
+	GridHandle(playerClass p, enemyClass e, std::string board);
 	//test -- print grid
 	void printGrid();
 
@@ -25,10 +25,16 @@ public:
 	void readFromString(std::string r);
 
 	//swap two positions
-	void swapPositions(Move, int pos1i, int pos1j, int pos2i, int pos2j);
+	void swapPositions(Move moves);
 
 	//save the game
 	saveFile saveGame(std::string test);
+
+	//get player
+	playerClass getPlayer();
+
+	//get enemy
+	enemyClass getEnemy();
 
 private:
 	//drop down tiles -- performs 'bubble sort'
@@ -37,7 +43,7 @@ private:
 	void dropSortAlgorithm(int index);
 
 	//check area around where swap is made and remove match
-	bool checkSwapArea(Move, int pos1i, int pos1j, int pos2i, int pos2j);
+	bool checkSwapArea(Move moves);
 
 	//sets removed blocks to 0 then calls dropDown
 	void removeFromGrid();
@@ -47,6 +53,4 @@ private:
 
 	//sets given position to zero
 	void setPosZero(int i, int j);
-
-	void incrementResource(int resource);
 };

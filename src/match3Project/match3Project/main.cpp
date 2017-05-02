@@ -65,7 +65,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cin >> c;
 	std::cin >> d;
 
-	HandleTest.swapPositions(a, b, c, d);
+	
 
 
 

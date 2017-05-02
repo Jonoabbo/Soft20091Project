@@ -2,5 +2,5 @@
 
 
 struct Move {
-	int firstX, firstY, secondX, secondY, tile, size;
+	int firstI, firstJ, secondI, secondJ, tile, size;
 };

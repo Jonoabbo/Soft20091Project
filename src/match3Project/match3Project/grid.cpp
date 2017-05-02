@@ -159,10 +159,10 @@ vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 	{
 		for (int i = 1; i < 8; i++)
 		{
-			temp.firstX = 0;
-			temp.firstY = 0;
-			temp.secondX = 0;
-			temp.secondY = 0;
+			temp.firstI = 0;
+			temp.firstJ = 0;
+			temp.secondI = 0;
+			temp.secondJ = 0;
 			temp.tile = 0;
 			temp.size = 0;
 			tile = tempGrid[i][j];
@@ -173,10 +173,10 @@ vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 				{
 					if (tile == tempGrid[i + 1][j - 1])
 					{
-						temp.firstX = i;
-						temp.firstY = j;
-						temp.secondX = i + 1;
-						temp.secondY = j - 1;
+						temp.firstI = i;
+						temp.firstJ = j;
+						temp.secondI = i + 1;
+						temp.secondJ = j - 1;
 						temp.tile = tile;
 
 						if (tile == tempGrid[i + 3][j])
@@ -195,10 +195,10 @@ vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 					}
 					else if (tile == tempGrid[i + 1][j + 1])
 					{
-						temp.firstX = i;
-						temp.firstY = j;
-						temp.secondX = i + 1;
-						temp.secondY = j + 1;
+						temp.firstI = i;
+						temp.firstJ = j;
+						temp.secondI = i + 1;
+						temp.secondJ = j + 1;
 						temp.tile = tile;
 
 						if (tile == tempGrid[i + 3][j])
@@ -218,10 +218,10 @@ vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 					{
 						if (tile == tempGrid[i + 2][j - 1])//x10/x20/x03
 						{
-							temp.firstX = i;
-							temp.firstY = j;
-							temp.secondX = i + 2;
-							temp.secondY = j - 1;
+							temp.firstI = i;
+							temp.firstJ = j;
+							temp.secondI = i + 2;
+							temp.secondJ = j - 1;
 							temp.tile = tile;
 							if (tile == tempGrid[i + 3][j])
 							{
@@ -241,10 +241,10 @@ vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 						}
 						else if (tile == tempGrid[i + 2][j + 1])
 						{
-							temp.firstX = i;
-							temp.firstY = j;
-							temp.secondX = i + 2;
-							temp.secondY = j - 1;
+							temp.firstI = i;
+							temp.firstJ = j;
+							temp.secondI = i + 2;
+							temp.secondJ = j - 1;
 							temp.tile = tile;
 							if (tile == tempGrid[i + 3][j])
 							{
@@ -268,6 +268,9 @@ vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 			moves.push_back(temp);
 		}
 	}
+
+	return moves;
+
 }
 
 vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
@@ -285,10 +288,10 @@ vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
 	{
 		for (int j = 1; j < 8; j++)
 		{
-			temp.firstX = 0;
-			temp.firstY = 0;
-			temp.secondX = 0;
-			temp.secondY = 0;
+			temp.firstI = 0;
+			temp.firstJ = 0;
+			temp.secondI = 0;
+			temp.secondJ = 0;
 			temp.tile = 0;
 			temp.size = 0;
 			tile = tempGrid[i][j];
@@ -299,10 +302,10 @@ vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
 				{
 					if (tile == tempGrid[i - 1][j + 1])
 					{
-						temp.firstX = i;
-						temp.firstY = j;
-						temp.secondX = i - 1;
-						temp.secondY = j + 1;
+						temp.firstI = i;
+						temp.firstJ = j;
+						temp.secondI = i - 1;
+						temp.secondJ = j + 1;
 						temp.tile = tile;
 
 						if (tile == tempGrid[i][j + 3])
@@ -321,10 +324,10 @@ vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
 					}
 					else if (tile == tempGrid[i + 1][j + 1])
 					{
-						temp.firstX = i;
-						temp.firstY = j;
-						temp.secondX = i + 1;
-						temp.secondY = j + 1;
+						temp.firstI = i;
+						temp.firstJ = j;
+						temp.secondI = i + 1;
+						temp.secondJ = j + 1;
 						temp.tile = tile;
 
 						if (tile == tempGrid[i][ j+ 3])
@@ -344,10 +347,10 @@ vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
 					{
 						if (tile == tempGrid[i - 1][j + 2])//x10/x20/x03
 						{
-							temp.firstX = i;
-							temp.firstY = j;
-							temp.secondX = i - 1;
-							temp.secondY = j + 2;
+							temp.firstI = i;
+							temp.firstJ = j;
+							temp.secondI = i - 1;
+							temp.secondJ = j + 2;
 							temp.tile = tile;
 							if (tile == tempGrid[i][j + 3])
 							{
@@ -367,10 +370,10 @@ vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
 						}
 						else if (tile == tempGrid[i + 1][j + 2])
 						{
-							temp.firstX = i;
-							temp.firstY = j;
-							temp.secondX = i - 1;
-							temp.secondY = j + 2;
+							temp.firstI = i;
+							temp.firstJ = j;
+							temp.secondI = i - 1;
+							temp.secondJ = j + 2;
 							temp.tile = tile;
 							if (tile == tempGrid[i][j + 3])
 							{
@@ -394,4 +397,7 @@ vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
 			moves.push_back(temp);
 		}
 	}
+
+	return moves;
+
 }
