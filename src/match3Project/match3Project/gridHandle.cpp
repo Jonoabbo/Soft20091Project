@@ -319,6 +319,8 @@ bool GridHandle::checkSwapArea(Move moves)
 
 					//remove coords from vector
 
+					//DO THIS NOW
+
 				}
 			}
 
