@@ -8,7 +8,7 @@
 class enemyClass: public playerClass
 {	
 private:
-	int difficulty, redWeight,blueWeight,YellowWeight,greenWeight;
+	int difficulty = 5, redWeight,blueWeight,YellowWeight,greenWeight;
 	
 	
 public:

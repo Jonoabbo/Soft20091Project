@@ -269,7 +269,10 @@ vector<Move> Grid::getHorizontalMoves(vector<Move> moves) {
 					}
 				}
 			}
-			moves.push_back(temp);
+			if (temp.size != 0)
+			{
+				moves.push_back(temp);
+			}
 		}
 	}
 
@@ -398,7 +401,10 @@ vector<Move> Grid::getVerticalMoves(std::vector<Move> moves) {
 					}
 				}
 			}
-			moves.push_back(temp);
+			if (temp.size != 0)
+			{
+				moves.push_back(temp);
+			}
 		}
 	}
 
