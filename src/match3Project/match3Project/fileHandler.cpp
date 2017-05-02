@@ -43,6 +43,8 @@ vector<string> fileHandler::checkCharacters(string profileName) {
 					{
 						while (line != "</profile>")
 						{
+							getline(saveFile, line);
+
 							if (line == "<character>")
 							{
 								getline(saveFile, line);
