@@ -16,6 +16,65 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	std::cout << "Welcome to Bargin Puzzle Quest" << std::endl;
+
+	vector<std::string> profileChoices;
+	vector<std::string> characterChoices;
+	loadBoard files;
+
+	int profileChoice;
+	int charChoice;
+	string profileChoiceString;
+
+	profileChoices = files.checkProfile();
+
+	std::cout << "There are " << profileChoices.size()+1 << " profiles to choose from:" << std::endl;
+
+	std::cout << "0. New Profile" << std::endl;
+
+	for (int i = 0; i < profileChoices.size(); i++)
+	{
+		std::cout << i+1 << ". " << profileChoices[i] << std::endl;
+	}
+
+	playerClass newPlayer;
+
+	std::cout << "Choice: ";
+	std::cin >> profileChoice;
+
+	if (profileChoice == 0)
+	{
+		//create new profile
+	}
+	else
+	{
+		//load chosen profile
+		profileChoiceString = profileChoices[profileChoice - 1];
+
+		characterChoices = files.checkCharacters(profileChoiceString);
+
+		std::cout << "There are " << characterChoices.size() << " characters to choose from:" << std::endl;
+
+		std::cout << "0. New Profile" << std::endl;
+		for (int i = 0; i < characterChoices.size(); i++)
+		{
+			std::cout << i + 1 << ". " << characterChoices[i] << std::endl;
+		}
+		std::cout << "Choice: ";
+		std::cin >> charChoice;
+
+		if (charChoice == 0)
+		{
+
+		}
+
+
+		loadBoard loadSave;
+		saveFile newSaveFile;
+		//newSaveFile = loadSave.getHardest(player.getProfileName());
+
+	}
+
 	GridInit test;
 
 	std::string hello = test.writeToString();
