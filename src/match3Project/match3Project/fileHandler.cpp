@@ -4,7 +4,7 @@
 #include <fstream>
 using namespace std;
 
-vector<string> fileHandler::checkProfile(string profileName) {
+vector<string> fileHandler::checkProfile() {
 	vector<string> profiles;
 	string line;
 	fstream saveFile;
@@ -17,10 +17,8 @@ vector<string> fileHandler::checkProfile(string profileName) {
 			if (line == "<profile>")
 			{
 				getline(saveFile, line);
-				if (line == profileName)
-				{
-					profiles.push_back(line);
-				}
+				profiles.push_back(line);
+				
 			}
 		}
 	}
@@ -28,7 +26,7 @@ vector<string> fileHandler::checkProfile(string profileName) {
 	return profiles;
 }
 
-vector<string> fileHandler::checkCharacters(string profileName, string characterName) {
+vector<string> fileHandler::checkCharacters(string profileName) {
 	vector<string> characters;
 		string line;
 		fstream saveFile;
@@ -63,7 +61,7 @@ vector<string> fileHandler::checkCharacters(string profileName, string character
 void fileHandler::addProfile(string profileName) {
 	vector<string> exsitingProfiles;
 	bool alreadyExsits = false;
-	exsitingProfiles = checkProfile(profileName);
+	exsitingProfiles = checkProfile();
 	vector<string> writeVector;
 	
 	//Checks if profile already exisits
@@ -133,7 +131,7 @@ void fileHandler::addProfile(string profileName) {
 void fileHandler::addCharacter(string profileName, string characterName) {
 	vector<string> exsitingCharacters;
 	bool alreadyExsits = false;
-	exsitingCharacters = checkCharacters(profileName, characterName);
+	exsitingCharacters = checkCharacters(profileName);
 	vector<string> writeVector;
 
 	//Checks if character already exisits
@@ -168,6 +166,15 @@ void fileHandler::addCharacter(string profileName, string characterName) {
 						writeVector.push_back("<character>");
 						writeVector.push_back(characterName);
 						writeVector.push_back("</character>");
+						//getline(saveFile,line);
+						/*if (exsitingCharacters.size() != 0)
+						{
+							while (line != "<character>")
+							{
+								getline(saveFile, line);
+							}
+						}*/
+						
 					}
 				}
 			}			
