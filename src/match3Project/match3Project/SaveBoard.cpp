@@ -33,7 +33,7 @@ saveBoard::saveBoard(saveFile saveF)
 	saveData.push_back("<board>");
 	saveData.push_back(saveF.board);
 	saveData.push_back("</board>");
-	save(saveData,saveF.player.getProfileName, saveF.player.getCharacterName);
+	save(saveData,saveF.player.getProfileName(), saveF.player.getCharacterName());
 
 }
 
@@ -49,7 +49,7 @@ void saveBoard::save(vector<string> saveData, string profileName, string charact
 	
 	fstream saveFile;
 	saveFile.open("gamesSaves.xml", ios::in);
-	if (saveFile.is_open)
+	if (saveFile.is_open())
 	{
 		while (getline(saveFile, line))
 		{

@@ -155,11 +155,13 @@ bool GridHandle::checkSwapArea(Move moves)
 {
 	std::vector<int> checkedLines[3];
 
-	int red;
-	int blue;
-	int yellow;
-	int green;
-	int damage;
+	int matchSize;
+
+	int red= 0;
+	int blue = 0;
+	int yellow = 0;
+	int green = 0;
+	int damage = 0;
 
 	if (moves.firstI == moves.secondI)
 	{
@@ -236,7 +238,7 @@ bool GridHandle::checkSwapArea(Move moves)
 					if (checkedLines[i][j] == 9) break;
 				}
 
-				moves.size = checkedLines[i].size;
+				matchSize = checkedLines[i].size();
 				std::cout << "the size of the match is: " << moves.size << std::endl;
 
 			}
@@ -316,7 +318,6 @@ bool GridHandle::checkSwapArea(Move moves)
 					grid[matchPositions[i]][matchPositions[i + 1]] = 0;
 
 					//remove coords from vector
-					matchPositions.pop_back
 
 				}
 			}
