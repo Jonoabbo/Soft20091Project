@@ -16,15 +16,22 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	//##########################################################
+	// G A M E  S E T U P
+	//##########################################################
+
 	std::cout << "Welcome to Bargin Puzzle Quest" << std::endl;
 
 	vector<std::string> profileChoices;
 	vector<std::string> characterChoices;
 	loadBoard files;
+	saveFile currentSave;
 
 	int profileChoice;
 	int charChoice;
 	string profileChoiceString;
+	string charChoiceString;
+	string boardString;
 
 	profileChoices = files.checkProfile();
 
@@ -38,6 +45,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	playerClass newPlayer;
+	enemyClass newEnemy;
 
 	std::cout << "Choice: ";
 	std::cin >> profileChoice;
@@ -45,35 +53,52 @@ int _tmain(int argc, _TCHAR* argv[])
 	if (profileChoice == 0)
 	{
 		//create new profile
+		system("CLS"); //clear screen 
 	}
 	else
 	{
 		//load chosen profile
-		profileChoiceString = profileChoices[profileChoice - 1];
+		system("CLS"); //clear screen 
 
+		profileChoiceString = profileChoices[profileChoice - 1];
 		characterChoices = files.checkCharacters(profileChoiceString);
 
-		std::cout << "There are " << characterChoices.size() << " characters to choose from:" << std::endl;
+		std::cout << "There are " << characterChoices.size() + 2 << " options to choose from:" << std::endl;
 
-		std::cout << "0. New Profile" << std::endl;
+		std::cout << "0. *New Profile" << std::endl;
+		std::cout << "1. *Load the hardest character" << std::endl;
 		for (int i = 0; i < characterChoices.size(); i++)
 		{
-			std::cout << i + 1 << ". " << characterChoices[i] << std::endl;
+			std::cout << i + 2 << ". " << characterChoices[i] << std::endl;
 		}
 		std::cout << "Choice: ";
 		std::cin >> charChoice;
 
 		if (charChoice == 0)
 		{
-
+			//new character
 		}
+		else if (charChoice == 1)
+		{
+			currentSave = files.getHardest(profileChoiceString);
+		}
+		else
+		{
+			charChoiceString = characterChoices[charChoice - 2];
+			currentSave = files.loadCharacter(profileChoiceString, charChoiceString);
+		}
+		
+		system("CLS"); //clear screen 
 
-
-		loadBoard loadSave;
-		saveFile newSaveFile;
-		//newSaveFile = loadSave.getHardest(player.getProfileName());
+		newPlayer = currentSave.player;
+		newEnemy = currentSave.enemy;
+		boardString = currentSave.board;
 
 	}
+
+	//##########################################################
+	// G A M E  L O O P
+	//##########################################################
 
 	GridInit test;
 
