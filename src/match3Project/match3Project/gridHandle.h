@@ -26,8 +26,12 @@ public:
 	//swap two positions
 	void swapPositions(Move moves);
 
+
+	//Choose the move from existing moves
+	void enemyMove(std::vector<Move>);
+
 	//save the game
-	saveFile saveGame(std::string test);
+	saveFile saveGame();
 
 	//get player hp
 	int getPlayerHp();
@@ -53,8 +57,6 @@ private:
 	//sets removed blocks to 0 then calls dropDown
 	void removeFromGrid();
 
-	//Choose the move from existing moves
-	void enemyMove(std::vector<Move>);
 
 	//sets given position to zero
 	void setPosZero(int i, int j);

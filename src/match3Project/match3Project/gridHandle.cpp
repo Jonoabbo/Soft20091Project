@@ -13,12 +13,15 @@ GridHandle::GridHandle(playerClass newP, enemyClass newE, std::string board) {
 	enemy = newE;
 	readFromString(board);
 }
+
 int GridHandle::getPlayerHp(){
 	return player.getHp();
 }
+
 int GridHandle::getEnemyHp() {
 	return enemy.getHp();
 }
+
 playerClass GridHandle::getPlayer()
 {
 	return player;
@@ -467,13 +470,13 @@ void GridHandle::swapPositions(Move moves)
 	}
 }
 
-saveFile GridHandle::saveGame(std::string test)
+saveFile GridHandle::saveGame()
 {
 	saveFile temp;
 
 	temp.player = player;
 	temp.enemy = enemy;
-	temp.board = test;
+	temp.board = writeToString();
 
 	return temp;
 }
@@ -481,7 +484,7 @@ saveFile GridHandle::saveGame(std::string test)
 void GridHandle::enemyMove(std::vector<Move> moves) {
 	int i, j, temp;		
 	//Claculate wighting of each move
-	moves = enemy.weighting();
+	moves = enemy.getWeighting(moves);
 	//insertion sort
 	for (i = 1; i < moves.size(); i++)
 	{

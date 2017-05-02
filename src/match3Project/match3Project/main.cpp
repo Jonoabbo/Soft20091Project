@@ -122,18 +122,53 @@ int _tmain(int argc, _TCHAR* argv[])
 	//##########################################################
 	GridHandle handler(newPlayer, newEnemy, boardString);
 	Move playerMove;
+	saveBoard saving;
+	int playerInput;
+	
 	while (handler.getPlayerHp() > 0 || handler.getEnemyHp > 0)
 	{
-		cout << "Select the X co-ordinate of the second tile";
-		cin >> playerMove.firstI;
-		cout << "Select the Y co-ordinate of the second tile";
-		cin >> playerMove.firstJ;
-		cout << "Select the X co-ordinate of the second tile";
-		cin >> playerMove.secondI;
-		cout << "Select the Y co-ordinate of the second tile";
-		cin >> playerMove.secondJ;
+		handler.printGrid();
+		if (handler.playersTurn == true)
+		{
+			cout << "What would you like to do?" << endl;
+			cout << "1: Make Move" << endl;
+			cout << "2: Save game" << endl;
+			cout << "3: Check Player" << endl;
+			cout << "4: Check Enemy" << endl;
+			cin >> playerInput;
+			switch (playerInput) 
+			{
+			case 1:
+				cout << "Select the X co-ordinate of the second tile";
+				cin >> playerMove.firstI;
+				cout << "Select the Y co-ordinate of the second tile";
+				cin >> playerMove.firstJ;
+				cout << "Select the X co-ordinate of the second tile";
+				cin >> playerMove.secondI;
+				cout << "Select the Y co-ordinate of the second tile";
+				cin >> playerMove.secondJ;
+				break;
+			case 2:				
+				saving.save(handler.saveGame());
+				cout << "Saved!" << endl;
+				cin >> playerInput;
+				break;
+			case 3:
+				cout << "PlayerHp: " << handler.getPlayerHp << endl;
+				cin >> playerInput;
+			case 4:
+				cout << "EnemyHp: " << handler.getPlayerHp << endl;
+				cin >> playerInput;
+
+			}
+		}
+		else
+		{
+			handler.enemyMove(handler.getMoves());
+		}
+		
 	}
-	handler.printGrid();
+	
 
 	//everthing below this is from before and not actually needed
 

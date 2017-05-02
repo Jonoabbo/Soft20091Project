@@ -99,7 +99,7 @@ void enemyClass::enemyFavourite() {
 			break;
 	}
 }
-std::vector<int> enemyClass::getWeighting(std::vector<int> moves) {
+std::vector<Move> enemyClass::getWeighting(std::vector<Move> moves) {
 	for (int i = 0; i < moves.size; 0)
 	{
 		moves[i].weigthing = weighting(moves[i].tile, moves[i].size);
