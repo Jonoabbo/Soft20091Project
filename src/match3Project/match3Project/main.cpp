@@ -124,7 +124,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	Move playerMove;
 	saveBoard saving;
 	int playerInput;
+	bool quit = false;
 
+ while(true)
 	while (handler.getPlayerHp() > 0 || handler.getEnemyHp() > 0)
 	{
 		handler.printGrid();
@@ -152,6 +154,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			case 2:				
 				saving.save(handler.saveGame());
 				cout << "Saved!" << endl;
+				
+				goto exit_loop;
 				cin >> playerInput;
 				break;
 			case 3:
@@ -169,7 +173,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		
 	}
-	
+}
+exit_loop: ;
 
 	//everthing below this is from before and not actually needed
 	return 0;
