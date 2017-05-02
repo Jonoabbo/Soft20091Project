@@ -127,18 +127,18 @@ int _tmain(int argc, _TCHAR* argv[])
 	bool quit = false;
 
  while(true){
-	while (handler.getPlayerHp() > 0 || handler.getEnemyHp() > 0)
+	while (handler.getPlayerHp() > 0)// || handler.getEnemyHp() > 0)
 	{
 		cout << "Who's turn?  " << handler.playersTurn << endl;
 		
-		if (handler.playersTurn == true)
-		{
+		//if (handler.playersTurn == true)
+		//{
 			handler.printGrid();
 			cout << "What would you like to do?" << endl;
 			cout << "1: Make Move" << endl;
 			cout << "2: Save game" << endl;
 			cout << "3: Check Player" << endl;
-			cout << "4: Check Enemy" << endl;
+			//cout << "4: Check Enemy" << endl;
 			cin >> playerInput;
 			switch (playerInput) 
 			{
@@ -171,11 +171,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 			}
 		}
-		else
-		{
-			cout << "Enemy's Turn" << endl;
-			handler.enemyMove(handler.getMoves());
-		}
+		//else
+		//{
+		//	cout << "Enemy's Turn" << endl;
+		//	handler.enemyMove(handler.getMoves());
+		//}
 		
 	}
 }
