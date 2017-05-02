@@ -139,13 +139,13 @@ int _tmain(int argc, _TCHAR* argv[])
 			switch (playerInput) 
 			{
 			case 1:
-				cout << "Select the X co-ordinate of the first tile";
+				cout << "Select the I co-ordinate of the first tile";
 				cin >> playerMove.firstI;
-				cout << "Select the Y co-ordinate of the first tile";
+				cout << "Select the J co-ordinate of the first tile";
 				cin >> playerMove.firstJ;
-				cout << "Select the X co-ordinate of the second tile";
+				cout << "Select the I co-ordinate of the second tile";
 				cin >> playerMove.secondI;
-				cout << "Select the Y co-ordinate of the second tile";
+				cout << "Select the J co-ordinate of the second tile";
 				cin >> playerMove.secondJ;
 				break;
 			case 2:				
