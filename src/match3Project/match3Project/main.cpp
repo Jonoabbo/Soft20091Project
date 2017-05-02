@@ -47,7 +47,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	player1.setProfileName("Liam");
 	player1.setProfileName("hates life...");
 
-	saveBoard newSave2(HandleTest.saveGame(hello));
+	//saveBoard newSave2(HandleTest.saveGame(hello));
 
 	//loadBoard loadSave;
 	

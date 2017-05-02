@@ -43,49 +43,84 @@ saveBoard::saveBoard(saveFile saveF)
 
 }
 
-void saveBoard::save(vector<string> saveData) 
+void saveBoard::save(vector<string> saveData)
 {
 	string line;
 	vector<string> temp;
-	fstream saveFile;
-	saveFile.open("gamesSaves.xml", ios::out);
-	while (saveFile.is_open())
-	{
-		getline(saveFile, line);
-		string hello = line;
 
-		cout << "line is: " << hello << endl;
-		if (line.empty())
+	//player name
+	string playerName = saveData[3];
+	//player profile
+	string playerProfile = saveData[1];
+
+	fstream saveFile;
+	saveFile.open("gamesSaves.xml", ios::in);
+	if (saveFile.is_open())
+	{
+		//if the file contains data already do this
+		getline(saveFile, line);
+		temp.push_back(line);
+		if (line == "<root>")
 		{
-			//if the file is empty do this
-			temp.push_back("<root>");
+			//Look through each line until the profile is found
+			while (getline(saveFile, line))
+			{
+				if (line == "<profile>")
+				{
+					getline(saveFile, line);
+					if (line == playerProfile)
+					{
+						//profile already exists
+						cout << "Profile already exists" << endl;
+						break;
+
+						getline(saveFile, line);
+						if (line == "<character>")
+						{
+							while (getline(saveFile, line))
+							{
+								if (line == playerName)
+								{
+									cout << "Player name already exists." << endl;
+									cout << "Updating current save." << endl;
+								}
+							}
+						}
+
+						break;
+					}
+				}
+			}
+
 			for (int n = 0; n < saveData.size(); n++)
 			{
 				temp.push_back(saveData[n]);
 			}
-			temp.push_back("</root>");
-
-			break;
-
-		}
-		else
-		{
-			//if the file contains data already do this
-			temp.push_back(line);
-			if (line == "<root>")
+			 
+			while (saveFile.is_open())
 			{
-				for (int n = 0; n < saveData.size(); n++)
+				getline(saveFile, line);
+				temp.push_back(line);
+
+				if (line == "</root>")
 				{
-					temp.push_back(saveData[n]);
+					break;
 				}
 			}
-			getline(saveFile, line);
-			temp.push_back(line);
-
 		}
-	}
+		saveFile.close();
 
-	saveFile.close();
+	}
+	else
+	{
+		//if the file is empty do this
+		temp.push_back("<root>");
+		for (int n = 0; n < saveData.size(); n++)
+		{
+			temp.push_back(saveData[n]);
+		}
+		temp.push_back("</root>");
+	}
 
 	saveFile.open("gamesSaves.xml", ios::out);
 	if (saveFile.is_open())
