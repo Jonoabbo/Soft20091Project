@@ -1,4 +1,5 @@
 #pragma once
+#include "fileHandler.h"
 #include "EnemyClass.h"
 #include "PlayerClass.h"
 #include "SaveFile.h"
@@ -6,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-class loadBoard {
+class loadBoard : public fileHandler {
 public:
 	loadBoard();
 
