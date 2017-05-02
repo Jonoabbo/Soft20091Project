@@ -35,25 +35,13 @@ enemyClass GridHandle::getEnemy()
 void GridHandle::printGrid()
 {
 	//Slightly biggerGrid that will have co ordinates around it
-	int bigGrid[9][9], i, j;
-	for (i = 0; i < 9; i++)
-	{
-		bigGrid[0][i] = i;
-		bigGrid[i][0] = i ;
-	}
-	for (i = 0; i < 8; i++)
-	{
-		for (j = 0; j < 8; j++)
-		{
-			bigGrid[i + 1][j + 1] = grid[i][j];
-		}
-	}
+	
 
-	for (i = 0; i < 9; i++)
+	for (int i = 0; i < 8; i++)
 	{
-		for (j = 0; j < 9; j++)
+		for (int j = 0; j < 8; j++)
 		{
-			std::cout << bigGrid[i][j] << " ";
+			std::cout << grid[i][j] << " ";
 			if (j == 7)
 			{
 				std::cout << std::endl;
@@ -157,9 +145,9 @@ void GridHandle::dropSortAlgorithm(int index)
 
 void GridHandle::readFromString(std::string r){
 	int count = 0;
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < 8; i++)
 	{
-		for (int j = 0; j < 9; j++)
+		for (int j = 0; j < 8; j++)
 		{
 			grid[i][j] = r[count] - '0';
 			count++;
