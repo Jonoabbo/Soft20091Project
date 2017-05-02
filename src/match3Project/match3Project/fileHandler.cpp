@@ -86,15 +86,17 @@ void fileHandler::addProfile(string profileName) {
 		saveFile.open("gamesSaves.xml", ios::in);
 		if (saveFile.is_open())
 		{			
-			getline(saveFile, line);
-			
-			writeVector.push_back(line);
-			if (line == "<root>")
+			while (getline(saveFile, line))
 			{
-				writeVector.push_back("<profile>");
-				writeVector.push_back(profileName);
-				writeVector.push_back("</profile>");
+				writeVector.push_back(line);
+				if (line == "<root>")
+				{
+					writeVector.push_back("<profile>");
+					writeVector.push_back(profileName);
+					writeVector.push_back("</profile>");
+				}
 			}
+			
 		}
 		else
 		{
