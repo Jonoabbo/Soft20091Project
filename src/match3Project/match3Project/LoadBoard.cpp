@@ -7,89 +7,79 @@
 using namespace std;
 
 loadBoard::loadBoard()
-{
-	//this
+{	
 }
 
 
 saveFile loadBoard::loadCharacter(string profileName, string charName) {
-	saveFile loadedFile;	
+	saveFile loadedFile;		
 	string line;
-	bool profileFound = false;
 	fstream saveFile;
 	saveFile.open("gameSaves.xml", ios::in);
 
 	if (saveFile.is_open())
 	{
-		//Look through each line until the profile is found
-		while (getline(saveFile, line))
+		while(getline(saveFile,line))
 		{
 			if (line == "<profile>")
 			{
 				getline(saveFile, line);
 				if (line == profileName)
 				{
-					profileFound = true;
-					break;
-				}
-			}
-		}
-
-		if (profileFound == true)
-		{
-			//go through every line in the profile
-			while (line != "</profile>")
-			{
-				getline(saveFile, line);
-
-				//If the line is <character>
-				if (line == "<character>")
-				{
-					getline(saveFile, line);
-					if (line == charName)
+					//go through every line in the profile
+					while (line != "</profile>")
 					{
-						while (line != "<\character>")
+						getline(saveFile, line);
+
+						//If the line is <character>
+						if (line == "<character>")
 						{
 							getline(saveFile, line);
-							if(line =="<playerData>")
-							{ 
-								getline(saveFile, line);
-								loadedFile.player.adjustHp(stoi(line));	
-								getline(saveFile, line);
-								loadedFile.player.adjustRed(stoi(line));					
-								getline(saveFile, line);
-								loadedFile.player.adjustBlue(stoi(line));
-								getline(saveFile, line);
-								loadedFile.player.adjustYellow(stoi(line));
-								getline(saveFile, line);
-								loadedFile.player.adjustGreen(stoi(line));
-							}
-							else if (line == "<enemyData>")
+							if (line == charName)
 							{
-								getline(saveFile, line);
-								loadedFile.enemy.adjustDifficulty(stoi(line));								
-								getline(saveFile, line);
-								loadedFile.enemy.adjustHp(stoi(line));								
-								getline(saveFile, line);
-								loadedFile.enemy.adjustRed(stoi(line));
-								getline(saveFile, line);
-								loadedFile.enemy.adjustBlue(stoi(line));
-								getline(saveFile, line);
-								loadedFile.enemy.adjustYellow(stoi(line));
-								getline(saveFile, line);
-								loadedFile.enemy.adjustGreen(stoi(line));
-							}
-							else if(line == "<board>")
-							{
-								getline(saveFile, line);
-								loadedFile.board = line;
+								while (line != "</character>")
+								{
+									getline(saveFile, line);
+									if(line =="<playerData>")
+									{ 
+										getline(saveFile, line);
+										loadedFile.player.adjustHp(stoi(line));	
+										getline(saveFile, line);
+										loadedFile.player.adjustRed(stoi(line));					
+										getline(saveFile, line);
+										loadedFile.player.adjustBlue(stoi(line));
+										getline(saveFile, line);
+										loadedFile.player.adjustYellow(stoi(line));
+										getline(saveFile, line);
+										loadedFile.player.adjustGreen(stoi(line));
+									}
+									else if (line == "<enemyData>")
+									{
+										getline(saveFile, line);
+										loadedFile.enemy.adjustDifficulty(stoi(line));								
+										getline(saveFile, line);
+										loadedFile.enemy.adjustHp(stoi(line));								
+										getline(saveFile, line);
+										loadedFile.enemy.adjustRed(stoi(line));
+										getline(saveFile, line);
+										loadedFile.enemy.adjustBlue(stoi(line));
+										getline(saveFile, line);
+										loadedFile.enemy.adjustYellow(stoi(line));
+										getline(saveFile, line);
+										loadedFile.enemy.adjustGreen(stoi(line));
+									}
+									else if(line == "<board>")
+									{
+										getline(saveFile, line);
+										loadedFile.board = line;
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-
 	}
 	saveFile.close();
 
@@ -165,7 +155,7 @@ saveFile loadBoard::getHardest(string profileName) {
 					counter++;
 					if (counter == position)
 					{
-						while (line != "<\character>")
+						while (line != "</character>")
 						{
 							getline(saveFile, line);
 							if (line == "<playerData>")
